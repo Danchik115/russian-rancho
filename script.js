@@ -37,45 +37,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bookingForm = document.querySelector(".booking-form");
   if (bookingForm) {
-    bookingForm.addEventListener("submit", (e) => {
+    bookingForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const formData = new FormData(bookingForm);
-      const name = formData.get("name");
-      const phone = formData.get("phone");
-      const interest = formData.get("interest");
-      const date = formData.get("date");
-      const people = formData.get("people");
-      const comment = formData.get("comment");
+      const body = {
+        name: formData.get("name") || "",
+        phone: formData.get("phone") || "",
+        interest: formData.get("interest") || "",
+        date: formData.get("date") || "",
+        people: formData.get("people") || "",
+        comment: formData.get("comment") || "",
+      };
 
-      const lines = [];
-      if (interest) {
-        lines.push(`Формат: ${interest}`);
-      }
-      if (date) {
-        lines.push(`Дата: ${date}`);
-      }
-      if (people) {
-        lines.push(`Количество человек: ${people}`);
-      }
-      if (comment) {
-        lines.push(`Комментарий: ${comment}`);
+      const submitBtn = bookingForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn?.textContent;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Отправка…";
       }
 
-      const message =
-        `Здравствуйте! Хочу записаться на Русское Ранчо.\n` +
-        `Имя: ${name || ""}\n` +
-        `Телефон: ${phone || ""}\n` +
-        (lines.length ? `\n${lines.join("\n")}` : "");
+      const apiBase = window.FORM_API_URL || "";
+      const apiUrl = apiBase + "/api/telegram";
 
-      const encoded = encodeURIComponent(message);
-      const phoneForWhatsApp = ""; // сюда можно подставить номер без +
+      try {
+        const res = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json().catch(() => ({}));
 
-      if (phoneForWhatsApp) {
-        const url = `https://wa.me/${phoneForWhatsApp}?text=${encoded}`;
-        window.open(url, "_blank");
-      } else {
-        alert("Заявка сформирована.\n\n" + message + "\n\nСкопируйте текст и отправьте его нам в удобный мессенджер.");
+        if (res.ok && data.ok) {
+          alert("Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.");
+          bookingForm.reset();
+        } else {
+          throw new Error(data.error || "Ошибка отправки");
+        }
+      } catch (err) {
+        const message =
+          "Здравствуйте! Хочу записаться на Русское Ранчо.\n" +
+          "Имя: " + (body.name || "—") + "\n" +
+          "Телефон: " + (body.phone || "—") + "\n" +
+          (body.interest ? "Интересует: " + body.interest + "\n" : "") +
+          (body.date ? "Дата: " + body.date + "\n" : "") +
+          (body.people ? "Человек: " + body.people + "\n" : "") +
+          (body.comment ? "Комментарий: " + body.comment : "");
+        alert("Не удалось отправить заявку автоматически.\n\nСкопируйте текст ниже и отправьте нам в Telegram (@zoloto_ha_shee) или по телефону:\n\n" + message);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText || "Отправить заявку";
+        }
       }
     });
   }
