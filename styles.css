@@ -209,6 +209,10 @@ button {
   flex-shrink: 0;
 }
 
+.hero-gallery .hero-ribbon-track {
+  animation-duration: 90s;
+}
+
 @keyframes hero-ribbon-move {
   0% {
     transform: translateX(-50%);
@@ -446,16 +450,21 @@ button {
 
 .object-photo {
   min-height: 200px;
+  aspect-ratio: 4 / 3;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.6);
-  border: 1px dashed rgba(210, 193, 173, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: var(--color-text-soft);
-  background-size: cover;
-  background-position: center;
+  border: 1px solid rgba(225, 213, 200, 0.9);
+  overflow: hidden;
+  position: relative;
+}
+
+.object-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .cards-grid {
@@ -680,16 +689,32 @@ button {
 }
 
 .photo-card {
+  aspect-ratio: 4 / 3;
   min-height: 180px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(225, 213, 200, 0.9);
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.05);
   color: rgba(47, 41, 35, 0.6);
-  display: flex;
-  align-items: flex-end;
-  padding: 10px 12px;
-  font-size: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: rgba(47, 41, 35, 0.6);
+  padding: 2rem 1rem;
+  margin: 0;
 }
 
 .gallery-item {
@@ -727,27 +752,27 @@ button {
 }
 
 .gallery-item-summer::before {
-  background-image: url("https://images.pexels.com/photos/1996333/pexels-photo-1996333.jpeg?auto=compress&cs=tinysrgb&w=1200");
+  background-image: url("assets/галерея/лето/photo_2026-03-15_13-02-14.jpg");
 }
 
 .gallery-item-winter::before {
-  background-image: url("https://images.pexels.com/photos/7571702/pexels-photo-7571702.jpeg?auto=compress&cs=tinysrgb&w=1200");
+  background-image: url("assets/галерея/зима/photo_2026-03-15_11-13-29.jpg");
 }
 
 .gallery-item-kids::before {
-  background-image: url("https://images.pexels.com/photos/4475929/pexels-photo-4475929.jpeg?auto=compress&cs=tinysrgb&w=1200");
+  background-image: url("assets/галерея/дети/photo_2026-03-15_13-02-06%20(2).jpg");
 }
 
 .gallery-item-couples::before {
-  background-image: url("https://images.pexels.com/photos/1449791/pexels-photo-1449791.jpeg?auto=compress&cs=tinysrgb&w=1200");
+  background-image: url("assets/галерея/любимые-гости/photo_2026-03-15_13-02-06.jpg");
 }
 
 .gallery-item-animals::before {
-  background-image: url("https://images.pexels.com/photos/1996331/pexels-photo-1996331.jpeg?auto=compress&cs=tinysrgb&w=1200");
+  background-image: url("assets/галерея/животные/photo_2026-03-15_12-59-43.jpg");
 }
 
 .gallery-item-events::before {
-  background-image: url("https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&w=1200");
+  background-image: url("assets/галерея/мероприятия/photo_2026-03-15_13-13-04.jpg");
 }
 
 .gallery-item:hover {
