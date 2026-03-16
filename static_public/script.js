@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const TELEGRAM_USERNAME = "@DaniilPetykhov";
+  const TELEGRAM_USERNAME = "@Zoloto_Ha_shee";
   const header = document.querySelector(".site-header");
   const navToggle = document.querySelector(".nav-toggle");
   const yearEl = document.getElementById("year");
