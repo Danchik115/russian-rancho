@@ -1,44 +1,15 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Русское Ранчо — семейная ферма и место отдыха рядом с Никольском</title>
-    <meta
-      name="description"
-      content="Русское Ранчо — семейная ферма рядом с Никольском: семейные программы, детские форматы, свидания и пикники, групповые выезды, мастер-классы и мероприятия на природе."
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="#top" class="logo">
-          <span class="logo-main">Русское Ранчо</span>
-          <span class="logo-sub">Семейная ферма и место отдыха в Вологодской области</span>
-        </a>
-        <nav class="main-nav">
-          <a href="#families">Для семей</a>
-          <a href="#kids">Для детей</a>
-          <a href="#couples">Для пар</a>
-          <a href="#groups">Для групп</a>
-          <a href="#events">Афиша</a>
-          <a href="#prices">Цены</a>
-          <a href="#about">О ферме</a>
-          <a href="nedvizhimost.html">Тепло и уют для&nbsp;вас</a>
-          <a href="#contacts">Контакты</a>
-        </nav>
-        <button class="nav-toggle" aria-label="Открыть меню">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </header>
+{% extends 'base.html' %}
+{% load static %}
 
-    <main id="top">
-      <!-- Первый экран -->
+{% block title %}Русское Ранчо — семейная ферма и место отдыха рядом с Никольском{% endblock %}
+{% block meta_description %}Русское Ранчо — семейная ферма рядом с Никольском: семейные программы, детские форматы, свидания и пикники, групповые выезды, мастер-классы и мероприятия на природе.{% endblock %}
+{% block main_attr %} id="top"{% endblock %}
+
+{% block content %}
+<!-- Первый экран -->
       <section class="hero">
         <div class="hero-media">
-          <video class="hero-video" src="assets/главная/img-3931_NDAs7qPZ.mp4" autoplay muted loop playsinline></video>
+          <video class="hero-video" src="{% static 'assets/главная/img-3931_NDAs7qPZ.mp4' %}" autoplay muted loop playsinline></video>
         </div>
         <div class="container hero-content">
           <p class="hero-kicker">Семейная ферма и место отдыха в Вологодской области</p>
@@ -58,11 +29,11 @@
           <div class="hero-booking">
             <p class="hero-booking-title">Быстрая бронь</p>
             <div class="hero-booking-links">
-              <a href="nedvizhimost.html#domik-u-lesa" class="hero-booking-link">Домик у леса</a>
-              <a href="nedvizhimost.html#domik-u-pruda" class="hero-booking-link">Домик у пруда</a>
-              <a href="nedvizhimost.html#teplaya-besedka-1" class="hero-booking-link">Тёплая беседка 1</a>
-              <a href="nedvizhimost.html#teplaya-besedka-2" class="hero-booking-link">Тёплая беседка 2</a>
-              <a href="nedvizhimost.html#letnyaya-besedka" class="hero-booking-link">Беседка летняя</a>
+              <a href="{% url 'main:nedvizhimost' %}#domik-u-lesa" class="hero-booking-link">Домик у леса</a>
+              <a href="{% url 'main:nedvizhimost' %}#domik-u-pruda" class="hero-booking-link">Домик у пруда</a>
+              <a href="{% url 'main:nedvizhimost' %}#teplaya-besedka-1" class="hero-booking-link">Тёплая беседка 1</a>
+              <a href="{% url 'main:nedvizhimost' %}#teplaya-besedka-2" class="hero-booking-link">Тёплая беседка 2</a>
+              <a href="{% url 'main:nedvizhimost' %}#letnyaya-besedka" class="hero-booking-link">Беседка летняя</a>
             </div>
           </div>
         </div>
@@ -183,7 +154,7 @@
             </article>
           </div>
           <div class="section-footer">
-            <a href="events.html" class="btn btn-primary">Открыть полную афишу</a>
+            <a href="{% url 'main:events' %}" class="btn btn-primary">Открыть полную афишу</a>
           </div>
         </div>
       </section>
@@ -231,12 +202,12 @@
             <p>Немного фотографий, чтобы почувствовать место.</p>
           </header>
           <div class="gallery-grid">
-            <a href="gallery.html#summer" class="gallery-item gallery-item-summer">Лето</a>
-            <a href="gallery.html#winter" class="gallery-item gallery-item-winter">Зима</a>
-            <a href="gallery.html#kids" class="gallery-item gallery-item-kids">Дети</a>
-            <a href="gallery.html#couples" class="gallery-item gallery-item-couples">Любимые гости</a>
-            <a href="gallery.html#animals" class="gallery-item gallery-item-animals">Животные</a>
-            <a href="gallery.html#events" class="gallery-item gallery-item-events">Мероприятия</a>
+            <a href="{% url 'main:gallery' %}#summer" class="gallery-item gallery-item-summer">Лето</a>
+            <a href="{% url 'main:gallery' %}#winter" class="gallery-item gallery-item-winter">Зима</a>
+            <a href="{% url 'main:gallery' %}#kids" class="gallery-item gallery-item-kids">Дети</a>
+            <a href="{% url 'main:gallery' %}#couples" class="gallery-item gallery-item-couples">Любимые гости</a>
+            <a href="{% url 'main:gallery' %}#animals" class="gallery-item gallery-item-animals">Животные</a>
+            <a href="{% url 'main:gallery' %}#events" class="gallery-item gallery-item-events">Мероприятия</a>
           </div>
         </div>
       </section>
@@ -257,7 +228,7 @@
               <li>Сезонные активности и семейные фотодни</li>
             </ul>
             <div class="section-actions">
-              <a href="families.html" class="btn btn-primary">Все семейные программы</a>
+              <a href="{% url 'main:families' %}" class="btn btn-primary">Все семейные программы</a>
               <a href="#contacts" class="btn btn-ghost">Спросить про формат</a>
             </div>
           </div>
@@ -280,7 +251,7 @@
               <li>Школьные и садовские группы</li>
             </ul>
             <div class="section-actions">
-              <a href="kids.html" class="btn btn-primary">Форматы для детей</a>
+              <a href="{% url 'main:kids' %}" class="btn btn-primary">Форматы для детей</a>
               <a href="#contacts" class="btn btn-ghost">Уточнить детали</a>
             </div>
           </div>
@@ -303,12 +274,12 @@
               <li>Годовщины и предложения</li>
             </ul>
             <div class="section-actions">
-              <a href="couples.html" class="btn btn-primary">Форматы для пар</a>
-              <a href="#contacts" class="btn btn-ghost">Подарочный сертификат</a>
+              <a href="{% url 'main:couples' %}" class="btn btn-primary">Форматы для пар</a>
+              <button type="button" class="btn btn-ghost" data-open="certificate-modal">Подарочный сертификат</button>
             </div>
           </div>
           <div class="section-image section-image-couples">
-            <img src="assets/для-пар/cd0c54659bdbe8ef54be0d1c2f127167.jpg" alt="Свидание на ранчо: пикник у воды" />
+            <img src="{% static 'assets/для-пар/cd0c54659bdbe8ef54be0d1c2f127167.jpg' %}" alt="Свидание на ранчо: пикник у воды" />
           </div>
         </div>
       </section>
@@ -328,12 +299,12 @@
               <li>Туристические группы</li>
             </ul>
             <div class="section-actions">
-              <a href="groups.html" class="btn btn-primary">Форматы для групп</a>
+              <a href="{% url 'main:groups' %}" class="btn btn-primary">Форматы для групп</a>
               <a href="#contacts" class="btn btn-ghost">Провести праздник у нас</a>
             </div>
           </div>
           <div class="section-image section-image-groups">
-            <img src="assets/для-групп/UFW81zkHwxtqe1qPv_6fgvmxYIQ97QZBeYiNSmov8hgCiQXMNrUhyJ-URB4xOxKgO8k9OcmHXKsRYbpGoWK6UojM.jpg" alt="Группа у скамьи желаний на ранчо" />
+            <img src="{% static 'assets/для-групп/UFW81zkHwxtqe1qPv_6fgvmxYIQ97QZBeYiNSmov8hgCiQXMNrUhyJ-URB4xOxKgO8k9OcmHXKsRYbpGoWK6UojM.jpg' %}" alt="Группа у скамьи желаний на ранчо" />
           </div>
         </div>
       </section>
@@ -370,7 +341,7 @@
             </div>
           </div>
           <div class="section-footer">
-            <a href="prices.html" class="btn btn-primary">Смотреть все цены</a>
+            <a href="{% url 'main:prices' %}" class="btn btn-primary">Смотреть все цены</a>
           </div>
         </div>
       </section>
@@ -389,11 +360,11 @@
               Здесь живут лошади, олени, кролики и другие животные, а ещё проходят семейные выходные, детские
               программы, свидания и праздники.
             </p>
-            <a href="about.html" class="btn btn-secondary">Подробнее о нас</a>
+            <a href="{% url 'main:about' %}" class="btn btn-secondary">Подробнее о нас</a>
           </div>
           <div class="section-image section-image-about">
             <img
-              src="assets/главная/logo-russian-rancho.png.jpg"
+              src="{% static 'assets/главная/logo-russian-rancho.png.jpg' %}"
               alt="Герб семейной фермы Русское Ранчо"
             />
           </div>
@@ -425,7 +396,7 @@
             </div>
             <div class="map-placeholder">
               <img
-                src="assets/главная/map-yandex-rancho.png"
+                src="{% static 'assets/главная/map-yandex-rancho.png' %}"
                 alt="Карта проезда к Русскому Ранчо рядом с Никольском"
               />
             </div>
@@ -494,15 +465,15 @@
               <li><strong>Телефон:</strong> <a href="tel:+79115210052">+7 (911) 521‑00‑52</a></li>
               <li>
                 <strong>Telegram:</strong>
-                <a href="https://t.me/zoloto_ha_shee" target="_blank" rel="noopener">@zoloto_ha_shee</a>
+                <a href="https://t.me/DaniilPetykhov" target="_blank" rel="noopener">@DaniilPetykhov</a>
               </li>
               <li><strong>VK:</strong> <a href="https://vk.com/pycckoe_rancho" target="_blank" rel="noopener">Мы ВКонтакте</a></li>
               <li><strong>Адрес:</strong> Вологодская область, Никольский район, д. Кожаево</li>
               <li><strong>Координаты:</strong> 59.478796, 45.514250</li>
             </ul>
             <div class="cta-buttons">
-              <a href="#" class="btn btn-primary">Подарочный сертификат</a>
-              <a href="#" class="btn btn-secondary">Провести праздник у нас</a>
+              <button type="button" class="btn btn-primary" data-open="certificate-modal">Подарочный сертификат</button>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Провести праздник у нас</a>
             </div>
             <div class="faq-preview">
               <h3>Частые вопросы</h3>
@@ -561,27 +532,4 @@
           </div>
         </div>
       </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <div class="logo-main">Русское Ранчо</div>
-          <div class="logo-sub">Семейная ферма и место отдыха в Вологодской области</div>
-        </div>
-        <div class="footer-links">
-          <a href="#formats">Форматы отдыха</a>
-          <a href="prices.html">Цены</a>
-          <a href="events.html">Афиша</a>
-          <a href="about.html">О ферме</a>
-        </div>
-        <div class="footer-meta">
-          <span>© <span id="year"></span> Русское Ранчо</span>
-        </div>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
-</html>
-
+{% endblock %}

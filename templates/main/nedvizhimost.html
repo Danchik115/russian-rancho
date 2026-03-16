@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Тепло и уют для вас — Русское Ранчо{% endblock %}
+{% block meta_description %}Домики и беседки на Русском Ранчо: тепло и уют для вас. Бронируйте домик у леса, домик у пруда или беседку.{% endblock %}
+{% block main_attr %}{% endblock %}
+
+{% block content %}
+<section class="section hero hero-page">
+        <div class="hero-media hero-media-page hero-media-about"></div>
+        <div class="container hero-content">
+          <p class="hero-kicker">Тепло и уют для<br>вас</p>
+          <h1>Домики и беседки для брони</h1>
+          <p class="hero-subtitle">
+            Выберите домик или беседку — можно забронировать на выходные, праздник или просто на отдых с семьёй и друзьями.
+          </p>
+          <div class="hero-actions">
+            <a href="#domik-u-lesa" class="btn btn-primary">Смотреть объекты</a>
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-outline">Забронировать</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Домик у леса -->
+      <section id="domik-u-lesa" class="section section-light">
+        <div class="container">
+          <header class="section-header">
+            <h2>Домик у леса</h2>
+            <p>Уютный домик у опушки — тишина, природа и комфорт.</p>
+          </header>
+          <div class="object-gallery">
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-lesa/interior-okno-les.jpg.jpg' %}" alt="Домик у леса — вид из окна на лес" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-lesa/photo_2026-03-15_13-17-44%20(2).jpg' %}" alt="Домик у леса" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-lesa/photo_2026-03-15_13-17-44.jpg' %}" alt="Домик у леса" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-lesa/photo_2026-03-15_13-17-45%20(2).jpg' %}" alt="Домик у леса" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-lesa/photo_2026-03-15_13-17-45.jpg' %}" alt="Домик у леса" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-lesa/photo_2026-03-15_13-17-46.jpg' %}" alt="Домик у леса" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-lesa/photo_2026-03-15_13-17-47.jpg' %}" alt="Домик у леса" loading="lazy"></div>
+          </div>
+          <div class="section-footer">
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Забронировать домик у леса</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Домик у пруда -->
+      <section id="domik-u-pruda" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Домик у пруда</h2>
+            <p>Домик с видом на воду — уединённо и красиво.</p>
+          </header>
+          <div class="object-gallery">
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-28%20(2).jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-28.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-29%20(2).jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-29.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-30.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-31%20(2).jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-31.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-33.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-34.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-37.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-38.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-39.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-40.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-42%20(2).jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-43.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+          </div>
+          <div class="section-footer">
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Забронировать домик у пруда</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Тёплая беседка 1 -->
+      <section id="teplaya-besedka-1" class="section section-light">
+        <div class="container">
+          <header class="section-header">
+            <h2>Тёплая беседка 1</h2>
+            <p>Закрытая тёплая беседка — можно отдыхать в любую погоду.</p>
+          </header>
+          <div class="object-gallery">
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-17-40%20(2).jpg' %}" alt="Тёплая беседка 1" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-17-41.jpg' %}" alt="Тёплая беседка 1" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-17-42.jpg' %}" alt="Тёплая беседка 1" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-25-16.jpg' %}" alt="Тёплая беседка 1" loading="lazy"></div>
+          </div>
+          <div class="section-footer">
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Забронировать тёплую беседку</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Тёплая беседка 2 -->
+      <section id="teplaya-besedka-2" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Тёплая беседка 2</h2>
+            <p>Вторая тёплая беседка — уют и тепло на природе.</p>
+          </header>
+          <div class="object-gallery">
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-2/photo_2026-03-15_13-17-32.jpg' %}" alt="Тёплая беседка 2" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-2/photo_2026-03-15_13-17-33.jpg' %}" alt="Тёплая беседка 2" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-2/photo_2026-03-15_13-17-34.jpg' %}" alt="Тёплая беседка 2" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-2/photo_2026-03-15_13-17-35.jpg' %}" alt="Тёплая беседка 2" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-2/photo_2026-03-15_13-17-36%20(2).jpg' %}" alt="Тёплая беседка 2" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-2/photo_2026-03-15_13-17-36.jpg' %}" alt="Тёплая беседка 2" loading="lazy"></div>
+          </div>
+          <div class="section-footer">
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Забронировать тёплую беседку</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Летняя беседка -->
+      <section id="letnyaya-besedka" class="section section-light">
+        <div class="container">
+          <header class="section-header">
+            <h2>Беседка летняя</h2>
+            <p>Открытая летняя беседка — вид на территорию и природу, отдых в тёплую погоду.</p>
+          </header>
+          <div class="object-gallery">
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-08-17.jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-14%20(2).jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-14.jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-15.jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+            <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-17.jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+          </div>
+          <div class="section-footer">
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Забронировать беседку</a>
+          </div>
+        </div>
+      </section>
+{% endblock %}

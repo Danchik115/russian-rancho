@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Для групп — Русское Ранчо{% endblock %}
+{% block meta_description %}Форматы для групп на Русском Ранчо: школьные экскурсии, корпоративы, семейные и туристические группы, выпускные и праздники.{% endblock %}
+{% block main_attr %}{% endblock %}
+
+{% block content %}
+<section class="section hero hero-page">
+        <div class="hero-ribbon" aria-hidden="true">
+          <div class="hero-ribbon-track">
+            <img src="{% static 'assets/для-групп/jP-ZIMvlVtXuJvINhoLeIqu7fTrIEHpA0h09qJReOxYt1139spkhiwaEjMcKnYujxNGcM-b-D0v_3IpyT9buEx2N.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-групп/nSXq4ZFFEl73Z1JeEERtEDRExH43qITO6svvR5MS515vUEtwdjWZXv1R13RWoRqPTFB_wFbfhsBwBuexRXCW0bkt.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-групп/UFW81zkHwxtqe1qPv_6fgvmxYIQ97QZBeYiNSmov8hgCiQXMNrUhyJ-URB4xOxKgO8k9OcmHXKsRYbpGoWK6UojM.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-групп/zc8keXHo0cHyOWsRcisX0hw7SX83tCFsoA5mjneG1VjJmipNAbrUyaPBpvq4HmUxEkOWqtFNv9jRk62hMcM9U2Pn.jpg' %}" alt="" />
+            <!-- дубликат для бесшовного цикла -->
+            <img src="{% static 'assets/для-групп/jP-ZIMvlVtXuJvINhoLeIqu7fTrIEHpA0h09qJReOxYt1139spkhiwaEjMcKnYujxNGcM-b-D0v_3IpyT9buEx2N.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-групп/nSXq4ZFFEl73Z1JeEERtEDRExH43qITO6svvR5MS515vUEtwdjWZXv1R13RWoRqPTFB_wFbfhsBwBuexRXCW0bkt.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-групп/UFW81zkHwxtqe1qPv_6fgvmxYIQ97QZBeYiNSmov8hgCiQXMNrUhyJ-URB4xOxKgO8k9OcmHXKsRYbpGoWK6UojM.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-групп/zc8keXHo0cHyOWsRcisX0hw7SX83tCFsoA5mjneG1VjJmipNAbrUyaPBpvq4HmUxEkOWqtFNv9jRk62hMcM9U2Pn.jpg' %}" alt="" />
+          </div>
+        </div>
+        <div class="container hero-content">
+          <p class="hero-kicker">Для групп</p>
+          <h1>Организованные заезды и праздники</h1>
+          <p class="hero-subtitle">
+            Раздел под будни и организованные выезды: школьные экскурсии, корпоративы, туристические группы и семейные
+            компании.
+          </p>
+          <div class="hero-actions">
+            <a href="#formats" class="btn btn-primary">Выбрать формат</a>
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-outline">Запросить расчёт</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="formats" class="section section-light">
+        <div class="container">
+          <header class="section-header">
+            <h2>Форматы для групп</h2>
+            <p>Подберём сценарий под возраст, количество людей и цели визита.</p>
+          </header>
+
+          <div class="cards-grid cards-grid-3">
+            <article class="program-card">
+              <div class="program-tag">Будни</div>
+              <h3>Школьная группа</h3>
+              <p>Экскурсия по ферме, знакомство с животными, интерактив, фотозона и угощение.</p>
+              <ul class="program-meta">
+                <li>Группа: от 10 человек</li>
+                <li>Длительность: от 2 часов</li>
+                <li>Цена: по запросу</li>
+              </ul>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Запросить условия</a>
+            </article>
+
+            <article class="program-card">
+              <div class="program-tag">Команда</div>
+              <h3>Корпоратив на природе</h3>
+              <p>Неформальный выезд: свежий воздух, ферма, активности, фотозона и пространство для общения.</p>
+              <ul class="program-meta">
+                <li>Группа: от 10 человек</li>
+                <li>Длительность: от 2 часов</li>
+                <li>Цена: по запросу</li>
+              </ul>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Собрать программу</a>
+            </article>
+
+            <article class="program-card">
+              <div class="program-tag">Праздник</div>
+              <h3>Выпускные / семейные праздники</h3>
+              <p>Сценарий под ваш повод: прогулка, активность, зона отдыха, угощение, музыка и фотозона.</p>
+              <ul class="program-meta">
+                <li>Группа: по запросу</li>
+                <li>Длительность: от 2 часов</li>
+                <li>Цена: по запросу</li>
+              </ul>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Запросить расчёт</a>
+            </article>
+
+            <article class="program-card">
+              <div class="program-tag">Гости</div>
+              <h3>Туристические группы</h3>
+              <p>Короткая остановка или полноценная программа: животные, прогулка, фототочкы, чай.</p>
+              <ul class="program-meta">
+                <li>Группа: от 10 человек</li>
+                <li>Длительность: от 2 часов</li>
+                <li>Цена: по запросу</li>
+              </ul>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Запросить условия</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-split">
+          <div class="section-text">
+            <h2>Что важно для групп</h2>
+            <ul class="bullet-list">
+              <li>Запись заранее обязательна, особенно в будни</li>
+              <li>Сценарий зависит от возраста, количества и времени</li>
+              <li>Можно добавить чай/блины, мастер-класс, фотозону</li>
+            </ul>
+            <div class="section-actions">
+              <a href="{% url 'main:events' %}" class="btn btn-outline">Посмотреть афишу</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Запросить расчёт</a>
+            </div>
+          </div>
+          <div class="section-image section-image-groups">
+            <img src="{% static 'assets/для-групп/UFW81zkHwxtqe1qPv_6fgvmxYIQ97QZBeYiNSmov8hgCiQXMNrUhyJ-URB4xOxKgO8k9OcmHXKsRYbpGoWK6UojM.jpg' %}" alt="Группа у скамьи желаний на ранчо" />
+          </div>
+        </div>
+      </section>
+{% endblock %}

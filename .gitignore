@@ -3,3 +3,9 @@ assets/nul
 
 # Большое видео (лимит GitHub 100 MB) — залейте на хостинг и укажите URL в index.html
 assets/главная/IMG_3931.MP4
+
+# Local env and runtime artifacts
+.env
+db.sqlite3
+staticfiles/
+__pycache__/

@@ -1,58 +1,31 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Для пар — Русское Ранчо</title>
-    <meta
-      name="description"
-      content="Свидания, пикники, закаты и фотосессии на Русском Ранчо — атмосферные форматы для двоих на природе рядом с Никольском."
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="index.html" class="logo">
-          <span class="logo-main">Русское Ранчо</span>
-          <span class="logo-sub">Семейная ферма и место отдыха в Вологодской области</span>
-        </a>
-        <nav class="main-nav">
-          <a href="families.html">Для семей</a>
-          <a href="kids.html">Для детей</a>
-          <a href="couples.html" aria-current="page">Для пар</a>
-          <a href="groups.html">Для групп</a>
-          <a href="events.html">Афиша</a>
-          <a href="prices.html">Цены</a>
-          <a href="about.html">О ферме</a>
-          <a href="nedvizhimost.html">Тепло и уют для&nbsp;вас</a>
-          <a href="index.html#contacts">Контакты</a>
-        </nav>
-        <button class="nav-toggle" aria-label="Открыть меню"><span></span><span></span><span></span></button>
-      </div>
-    </header>
+{% extends 'base.html' %}
+{% load static %}
 
-    <main>
-      <section class="section hero hero-page">
+{% block title %}Для пар — Русское Ранчо{% endblock %}
+{% block meta_description %}Свидания, пикники, закаты и фотосессии на Русском Ранчо — атмосферные форматы для двоих на природе рядом с Никольском.{% endblock %}
+{% block main_attr %}{% endblock %}
+
+{% block content %}
+<section class="section hero hero-page">
         <div class="hero-ribbon" aria-hidden="true">
           <div class="hero-ribbon-track">
-            <img src="assets/для-пар/cd0c54659bdbe8ef54be0d1c2f127167.jpg" alt="" />
-            <img src="assets/для-пар/dd46cae014cc2f9bb5dca9755af8ee6f.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-13-29.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-14-15.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-15-09.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-16-22.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-17-22.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-18-54.jpg" alt="" />
+            <img src="{% static 'assets/для-пар/cd0c54659bdbe8ef54be0d1c2f127167.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/dd46cae014cc2f9bb5dca9755af8ee6f.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-13-29.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-14-15.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-15-09.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-16-22.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-17-22.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-18-54.jpg' %}" alt="" />
             <!-- дубликат для бесшовного цикла -->
-            <img src="assets/для-пар/cd0c54659bdbe8ef54be0d1c2f127167.jpg" alt="" />
-            <img src="assets/для-пар/dd46cae014cc2f9bb5dca9755af8ee6f.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-13-29.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-14-15.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-15-09.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-16-22.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-17-22.jpg" alt="" />
-            <img src="assets/для-пар/photo_2026-03-15_11-18-54.jpg" alt="" />
+            <img src="{% static 'assets/для-пар/cd0c54659bdbe8ef54be0d1c2f127167.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/dd46cae014cc2f9bb5dca9755af8ee6f.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-13-29.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-14-15.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-15-09.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-16-22.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-17-22.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-пар/photo_2026-03-15_11-18-54.jpg' %}" alt="" />
           </div>
         </div>
         <div class="container hero-content">
@@ -63,7 +36,7 @@
           </p>
           <div class="hero-actions">
             <a href="#formats" class="btn btn-primary">Выбрать формат</a>
-            <a href="index.html#contacts" class="btn btn-outline">Записаться</a>
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-outline">Записаться</a>
           </div>
         </div>
       </section>
@@ -85,7 +58,7 @@
                 <li>Что входит: прогулка + зона отдыха + напитки (опционально)</li>
                 <li>Цена: от 2500 ₽ за пару</li>
               </ul>
-              <a href="index.html#contacts" class="btn btn-secondary">Записаться</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Записаться</a>
             </article>
 
             <article class="program-card">
@@ -97,7 +70,7 @@
                 <li>Что входит: место + плед/декор + корзина с едой и напитками по вашему желанию</li>
                 <li>Цена: от 3000 ₽</li>
               </ul>
-              <a href="index.html#contacts" class="btn btn-secondary">Забронировать</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Забронировать</a>
             </article>
 
             <article class="program-card">
@@ -114,7 +87,7 @@
                 <span class="program-photographer-name">Мария Горчакова</span>
                 <span class="program-photographer-hint">Открыть портфолио →</span>
               </a>
-              <a href="index.html#contacts" class="btn btn-secondary">Уточнить</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Уточнить</a>
             </article>
 
             <article class="program-card">
@@ -126,7 +99,7 @@
                 <li>Что входит: маршрут + зона отдыха</li>
                 <li>Цена: по запросу</li>
               </ul>
-              <a href="index.html#contacts" class="btn btn-secondary">Подобрать формат</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Подобрать формат</a>
             </article>
           </div>
         </div>
@@ -141,36 +114,13 @@
               сумму.
             </p>
             <div class="section-actions">
-              <a href="index.html#contacts" class="btn btn-primary">Оформить сертификат</a>
-              <a href="prices.html" class="btn btn-outline">Посмотреть цены</a>
+              <button type="button" class="btn btn-primary" data-open="certificate-modal">Оформить сертификат</button>
+              <a href="{% url 'main:prices' %}" class="btn btn-outline">Посмотреть цены</a>
             </div>
           </div>
           <div class="section-image section-image-certificate">
-            <img src="assets/1e6373bfec6be8a517e85a410194adfd.jpg" alt="Подарочный сертификат Русское Ранчо" />
+            <img src="{% static 'assets/1e6373bfec6be8a517e85a410194adfd.jpg' %}" alt="Подарочный сертификат Русское Ранчо" />
           </div>
         </div>
       </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <div class="logo-main">Русское Ранчо</div>
-          <div class="logo-sub">Семейная ферма и место отдыха в Вологодской области</div>
-        </div>
-        <div class="footer-links">
-          <a href="index.html">Главная</a>
-          <a href="events.html">Афиша</a>
-          <a href="prices.html">Цены</a>
-          <a href="index.html#contacts">Контакты</a>
-        </div>
-        <div class="footer-meta">
-          <span>© <span id="year"></span> Русское Ранчо</span>
-        </div>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
-</html>
-
+{% endblock %}

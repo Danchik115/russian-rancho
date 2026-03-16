@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: russian-rancho
+    runtime: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn config.wsgi:application
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "false"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "russian-rancho.onrender.com"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: TELEGRAM_API_BASE
+        value: "https://api.telegram.org"
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false

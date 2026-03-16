@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Русское Ранчо{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Русское Ранчо — семейная ферма и место отдыха в Вологодской области.{% endblock %}" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="{% if request.resolver_match.url_name == 'home' %}#top{% else %}{% url 'main:home' %}{% endif %}" class="logo">
+          <span class="logo-main">Русское Ранчо</span>
+          <span class="logo-sub">Семейная ферма и место отдыха в Вологодской области</span>
+        </a>
+        <nav class="main-nav">
+          <a href="{% url 'main:families' %}"{% if active_nav == 'families' %} aria-current="page"{% endif %}>Для семей</a>
+          <a href="{% url 'main:kids' %}"{% if active_nav == 'kids' %} aria-current="page"{% endif %}>Для детей</a>
+          <a href="{% url 'main:couples' %}"{% if active_nav == 'couples' %} aria-current="page"{% endif %}>Для пар</a>
+          <a href="{% url 'main:groups' %}"{% if active_nav == 'groups' %} aria-current="page"{% endif %}>Для групп</a>
+          <a href="{% url 'main:events' %}"{% if active_nav == 'events' %} aria-current="page"{% endif %}>Афиша</a>
+          <a href="{% url 'main:prices' %}"{% if active_nav == 'prices' %} aria-current="page"{% endif %}>Цены</a>
+          <a href="{% url 'main:about' %}"{% if active_nav == 'about' %} aria-current="page"{% endif %}>О ферме</a>
+          <a href="{% url 'main:nedvizhimost' %}"{% if active_nav == 'nedvizhimost' %} aria-current="page"{% endif %}>Тепло и уют для&nbsp;вас</a>
+          <a href="{% url 'main:home' %}#contacts">Контакты</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+      </div>
+    </header>
+
+    <main {% block main_attr %}id="top"{% endblock %}>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <div class="logo-main">Русское Ранчо</div>
+          <div class="logo-sub">Семейная ферма и место отдыха в Вологодской области</div>
+        </div>
+        <div class="footer-links">
+          <a href="{% url 'main:home' %}#formats">Форматы отдыха</a>
+          <a href="{% url 'main:prices' %}">Цены</a>
+          <a href="{% url 'main:events' %}">Афиша</a>
+          <a href="{% url 'main:about' %}">О ферме</a>
+        </div>
+        <div class="footer-meta">
+          <span>© <span id="year"></span> Русское Ранчо</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Модальное окно: подарочный сертификат -->
+    <div id="certificate-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="certificate-modal-title">
+      <div class="modal-backdrop" data-close="certificate-modal"></div>
+      <div class="modal-panel">
+        <button type="button" class="modal-close" aria-label="Закрыть" data-close="certificate-modal">&times;</button>
+        <h2 id="certificate-modal-title" class="modal-title">Подарочный сертификат</h2>
+        <p class="modal-subtitle">Заполните данные — мы свяжемся с вами для оформления и оплаты.</p>
+        <form class="booking-form certificate-form" id="certificate-form">
+          <label>
+            Ваше имя
+            <input type="text" name="name" placeholder="Как к вам обращаться?" required />
+          </label>
+          <label>
+            Телефон
+            <input type="tel" name="phone" placeholder="+7 ..." required />
+          </label>
+          <label>
+            Номинал сертификата
+            <select name="nominal" required>
+              <option value="">Выберите номинал</option>
+              <option value="1500">1 500 ₽</option>
+              <option value="2500">2 500 ₽</option>
+              <option value="3000">3 000 ₽</option>
+              <option value="5000">5 000 ₽</option>
+              <option value="10000">10 000 ₽</option>
+              <option value="other">Другая сумма (уточним)</option>
+            </select>
+          </label>
+          <label>
+            Имя получателя
+            <input type="text" name="recipient" placeholder="Кому подарить (необязательно)" />
+          </label>
+          <label>
+            Текст на сертификате / пожелание
+            <textarea name="wish" rows="2" placeholder="Краткое пожелание или текст для сертификата"></textarea>
+          </label>
+          <label>
+            Комментарий
+            <textarea name="comment" rows="2" placeholder="Дата вручения, доставка и т.д."></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-full">Отправить заявку на сертификат</button>
+          <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных. Мы свяжемся с вами для уточнения деталей и оплаты.</p>
+        </form>
+      </div>
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+  </body>
+</html>

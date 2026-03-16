@@ -1,54 +1,27 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Для семей — Русское Ранчо</title>
-    <meta
-      name="description"
-      content="Семейные программы Русского Ранчо: семейный выходной, знакомство с животными, прогулки, сезонные активности, чай и пикники."
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="index.html" class="logo">
-          <span class="logo-main">Русское Ранчо</span>
-          <span class="logo-sub">Семейная ферма и место отдыха в Вологодской области</span>
-        </a>
-        <nav class="main-nav">
-          <a href="families.html" aria-current="page">Для семей</a>
-          <a href="kids.html">Для детей</a>
-          <a href="couples.html">Для пар</a>
-          <a href="groups.html">Для групп</a>
-          <a href="events.html">Афиша</a>
-          <a href="prices.html">Цены</a>
-          <a href="about.html">О ферме</a>
-          <a href="nedvizhimost.html">Тепло и уют для&nbsp;вас</a>
-          <a href="index.html#contacts">Контакты</a>
-        </nav>
-        <button class="nav-toggle" aria-label="Открыть меню"><span></span><span></span><span></span></button>
-      </div>
-    </header>
+{% extends 'base.html' %}
+{% load static %}
 
-    <main>
-      <section class="section hero hero-page">
+{% block title %}Для семей — Русское Ранчо{% endblock %}
+{% block meta_description %}Семейные программы Русского Ранчо: семейный выходной, знакомство с животными, прогулки, сезонные активности, чай и пикники.{% endblock %}
+{% block main_attr %}{% endblock %}
+
+{% block content %}
+<section class="section hero hero-page">
         <div class="hero-ribbon" aria-hidden="true">
           <div class="hero-ribbon-track">
-            <img src="assets/для-семей/6WO99ZQZEPlyWU-7rkc63EGuQQZwBL7PuEEg7__MG6UPcmoe3-wvgE6E22KfpS1b9VGWvjMZVjO845SS15fnFiaG.jpg" alt="" />
-            <img src="assets/для-семей/6KrptPensZ2tPs5XiFXEQ8HQPxT0yrKXz1qKn-KAIeVmNaIorjYef1qwlKBfYKBEDbJTSAM9UQoMhop-Gtvmo4FZ.jpg" alt="" />
-            <img src="assets/для-семей/nhoWIRFapncJIivwMA9QTP5XmhYpFlwB4s4-ytFR005x-GXPZmr0CdO-EBZkpdhfISfb3KqAuPJI_2cY00lV5PGe.jpg" alt="" />
-            <img src="assets/для-семей/XEb6oywvgZWq9NQo9J0FLZkL4aFNlQ_sMs4az7yXoGt156_g3bo1fRjVSSILd_rz56D6CJdu3lu4aVsaU50pRXzY.jpg" alt="" />
-            <img src="assets/для-семей/fViW40a4oBNz1HMAa7kT8ylhMCrByKr7OMUJRZ6fOWq3vbq06othmjfb2rFR1UIrZYRzl37wdjRtLXr36H_2L_9G.jpg" alt="" />
-            <img src="assets/для-семей/lpnoDB7bwTdrfKmTMeSyjaFwH7Vy6Ln9n57cjawadB8JyQoZlfV4B_TEczGlXmXQSJywZ8keMmWHDb9pOEyga_jG.jpg" alt="" />
+            <img src="{% static 'assets/для-семей/6WO99ZQZEPlyWU-7rkc63EGuQQZwBL7PuEEg7__MG6UPcmoe3-wvgE6E22KfpS1b9VGWvjMZVjO845SS15fnFiaG.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/6KrptPensZ2tPs5XiFXEQ8HQPxT0yrKXz1qKn-KAIeVmNaIorjYef1qwlKBfYKBEDbJTSAM9UQoMhop-Gtvmo4FZ.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/nhoWIRFapncJIivwMA9QTP5XmhYpFlwB4s4-ytFR005x-GXPZmr0CdO-EBZkpdhfISfb3KqAuPJI_2cY00lV5PGe.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/XEb6oywvgZWq9NQo9J0FLZkL4aFNlQ_sMs4az7yXoGt156_g3bo1fRjVSSILd_rz56D6CJdu3lu4aVsaU50pRXzY.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/fViW40a4oBNz1HMAa7kT8ylhMCrByKr7OMUJRZ6fOWq3vbq06othmjfb2rFR1UIrZYRzl37wdjRtLXr36H_2L_9G.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/lpnoDB7bwTdrfKmTMeSyjaFwH7Vy6Ln9n57cjawadB8JyQoZlfV4B_TEczGlXmXQSJywZ8keMmWHDb9pOEyga_jG.jpg' %}" alt="" />
             <!-- дубликат для бесшовного цикла -->
-            <img src="assets/для-семей/6WO99ZQZEPlyWU-7rkc63EGuQQZwBL7PuEEg7__MG6UPcmoe3-wvgE6E22KfpS1b9VGWvjMZVjO845SS15fnFiaG.jpg" alt="" />
-            <img src="assets/для-семей/6KrptPensZ2tPs5XiFXEQ8HQPxT0yrKXz1qKn-KAIeVmNaIorjYef1qwlKBfYKBEDbJTSAM9UQoMhop-Gtvmo4FZ.jpg" alt="" />
-            <img src="assets/для-семей/nhoWIRFapncJIivwMA9QTP5XmhYpFlwB4s4-ytFR005x-GXPZmr0CdO-EBZkpdhfISfb3KqAuPJI_2cY00lV5PGe.jpg" alt="" />
-            <img src="assets/для-семей/XEb6oywvgZWq9NQo9J0FLZkL4aFNlQ_sMs4az7yXoGt156_g3bo1fRjVSSILd_rz56D6CJdu3lu4aVsaU50pRXzY.jpg" alt="" />
-            <img src="assets/для-семей/fViW40a4oBNz1HMAa7kT8ylhMCrByKr7OMUJRZ6fOWq3vbq06othmjfb2rFR1UIrZYRzl37wdjRtLXr36H_2L_9G.jpg" alt="" />
-            <img src="assets/для-семей/lpnoDB7bwTdrfKmTMeSyjaFwH7Vy6Ln9n57cjawadB8JyQoZlfV4B_TEczGlXmXQSJywZ8keMmWHDb9pOEyga_jG.jpg" alt="" />
+            <img src="{% static 'assets/для-семей/6WO99ZQZEPlyWU-7rkc63EGuQQZwBL7PuEEg7__MG6UPcmoe3-wvgE6E22KfpS1b9VGWvjMZVjO845SS15fnFiaG.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/6KrptPensZ2tPs5XiFXEQ8HQPxT0yrKXz1qKn-KAIeVmNaIorjYef1qwlKBfYKBEDbJTSAM9UQoMhop-Gtvmo4FZ.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/nhoWIRFapncJIivwMA9QTP5XmhYpFlwB4s4-ytFR005x-GXPZmr0CdO-EBZkpdhfISfb3KqAuPJI_2cY00lV5PGe.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/XEb6oywvgZWq9NQo9J0FLZkL4aFNlQ_sMs4az7yXoGt156_g3bo1fRjVSSILd_rz56D6CJdu3lu4aVsaU50pRXzY.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/fViW40a4oBNz1HMAa7kT8ylhMCrByKr7OMUJRZ6fOWq3vbq06othmjfb2rFR1UIrZYRzl37wdjRtLXr36H_2L_9G.jpg' %}" alt="" />
+            <img src="{% static 'assets/для-семей/lpnoDB7bwTdrfKmTMeSyjaFwH7Vy6Ln9n57cjawadB8JyQoZlfV4B_TEczGlXmXQSJywZ8keMmWHDb9pOEyga_jG.jpg' %}" alt="" />
           </div>
         </div>
         <div class="container hero-content">
@@ -60,7 +33,7 @@
           </p>
           <div class="hero-actions">
             <a href="#programs" class="btn btn-primary">Выбрать программу</a>
-            <a href="index.html#contacts" class="btn btn-outline">Записаться</a>
+            <a href="{% url 'main:home' %}#contacts" class="btn btn-outline">Записаться</a>
           </div>
         </div>
       </section>
@@ -82,7 +55,7 @@
                 <li>Что входит: животные, прогулка, сезонная активность (катание на катамаранах, квадроцикле, сап-бордах, прогулки по «тропе босых» и другие развлечения)</li>
                 <li>Цена: от 1500 ₽ за семью</li>
               </ul>
-              <a href="index.html#contacts" class="btn btn-secondary">Записаться</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Записаться</a>
             </article>
 
             <article class="program-card">
@@ -94,7 +67,7 @@
                 <li>Что входит: маршрут по ферме, животные, фото-точки</li>
                 <li>Цена: от 400 ₽ / человек</li>
               </ul>
-              <a href="index.html#contacts" class="btn btn-secondary">Записаться</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Записаться</a>
             </article>
 
             <article class="program-card">
@@ -111,7 +84,7 @@
                 <span class="program-photographer-name">Мария Горчакова</span>
                 <span class="program-photographer-hint">Открыть портфолио →</span>
               </a>
-              <a href="index.html#contacts" class="btn btn-secondary">Уточнить</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Уточнить</a>
             </article>
           </div>
         </div>
@@ -128,34 +101,11 @@
               <li>Чай/блины, пикник, экскурсия, фотосессия по предварительной записи</li>
             </ul>
             <div class="section-actions">
-              <a href="prices.html" class="btn btn-outline">Посмотреть цены</a>
-              <a href="index.html#contacts" class="btn btn-primary">Записаться</a>
+              <a href="{% url 'main:prices' %}" class="btn btn-outline">Посмотреть цены</a>
+              <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Записаться</a>
             </div>
           </div>
           <div class="section-image section-image-families"></div>
         </div>
       </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <div class="logo-main">Русское Ранчо</div>
-          <div class="logo-sub">Семейная ферма и место отдыха в Вологодской области</div>
-        </div>
-        <div class="footer-links">
-          <a href="index.html">Главная</a>
-          <a href="events.html">Афиша</a>
-          <a href="prices.html">Цены</a>
-          <a href="index.html#contacts">Контакты</a>
-        </div>
-        <div class="footer-meta">
-          <span>© <span id="year"></span> Русское Ранчо</span>
-        </div>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
-</html>
-
+{% endblock %}
