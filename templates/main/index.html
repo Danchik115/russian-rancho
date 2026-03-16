@@ -15,7 +15,7 @@
           <p class="hero-kicker">Семейная ферма и место отдыха в Вологодской области</p>
           <h1>Русское Ранчо</h1>
           <p class="hero-subtitle">
-            Животные, прогулки, семейные программы, свидания, мастер-классы и мероприятия на природе.
+            Русское Ранчо — живой семейный отдых с животными, прогулками и теплой атмосферой рядом с Никольском.
           </p>
           <div class="hero-actions">
             <a href="#formats" class="btn btn-primary">Выбрать программу</a>
@@ -322,6 +322,33 @@
               </ul>
               <a href="#couples" class="btn btn-secondary">Подробнее и запись</a>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Подарочный сертификат (быстрый акцент выше по странице) -->
+      <section class="section section-light">
+        <div class="container section-split">
+          <div class="section-text">
+            <h2>Подарочный сертификат</h2>
+            <p>
+              Идея для тех, кто хочет подарить впечатления, а не вещь: ранчо, природа, животные и теплый отдых для близких.
+            </p>
+            <ul class="bullet-list">
+              <li>Подходит для семей, пар и друзей</li>
+              <li>Номинал подберем под ваш бюджет</li>
+              <li>Оформление через Telegram или по телефону</li>
+            </ul>
+            <div class="section-actions">
+              <button type="button" class="btn btn-primary" data-open="certificate-modal">Оформить сертификат</button>
+              <button type="button" class="btn btn-secondary" data-open="booking-modal" data-interest="other">Задать вопрос</button>
+            </div>
+          </div>
+          <div class="section-image section-image-about">
+            <img
+              src="{% static 'assets/1e6373bfec6be8a517e85a410194adfd.jpg' %}"
+              alt="Подарочный сертификат Русского Ранчо"
+            />
           </div>
         </div>
       </section>
@@ -638,7 +665,7 @@
         <div class="container">
           <header class="section-header">
             <h2>Атмосфера ранчо</h2>
-            <p>Немного фотографий, чтобы почувствовать место.</p>
+            <p>Посмотрите, как проходит отдых на ранчо в разные сезоны.</p>
           </header>
           <div class="gallery-grid">
             <a href="{% url 'main:gallery' %}#summer" class="gallery-item gallery-item-summer">Лето</a>
@@ -722,7 +749,7 @@
           <div class="section-split">
             <div class="section-text">
               <p>
-                Мы находимся рядом с Никольском в деревне Кожаево, в 10 минутах езды на автомобиле.
+                Мы находимся рядом с Никольском в деревне Кожаево, в 15–20 минутах езды на автомобиле.
                 С удовольствием приглашаем вас к нам в гости для знакомства с нашими животными и развлечениями.
               </p>
               <p><strong>Координаты и отзывы:</strong> смотрите нас на Яндекс Картах.</p>
@@ -870,6 +897,7 @@
                 <textarea name="comment" rows="3" placeholder="Любые детали: возраст детей, формат, время и т.д."></textarea>
               </label>
               <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+              <p class="form-note">Обычно отвечаем в Telegram в течение 15 минут в рабочее время.</p>
               <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
             </form>
           </div>
