@@ -74,7 +74,7 @@ button {
   align-items: center;
   justify-content: space-between;
   height: var(--nav-height);
-  gap: 24px;
+  gap: 16px;
 }
 
 .logo {
@@ -99,15 +99,16 @@ button {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 18px;
-  font-size: 14px;
+  gap: 10px;
+  font-size: 13px;
 }
 
 .main-nav a {
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-radius: 999px;
   color: var(--color-text-soft);
   transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
 }
 
 .main-nav a:hover {
@@ -117,15 +118,40 @@ button {
 }
 
 .main-nav a.nav-cta {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  background: var(--color-primary-dark);
   color: #ffffff;
   border: 1px solid transparent;
-  box-shadow: 0 10px 22px rgba(139, 29, 44, 0.28);
+  box-shadow: 0 6px 14px rgba(139, 29, 44, 0.18);
+  padding: 7px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .main-nav a.nav-cta:hover {
-  background: linear-gradient(135deg, #9d2233, var(--color-primary));
+  background: var(--color-primary);
   color: #ffffff;
+}
+
+@media (max-width: 1240px) {
+  .logo-sub {
+    display: none;
+  }
+
+  .logo-main {
+    font-size: 13px;
+  }
+
+  .main-nav {
+    gap: 6px;
+    font-size: 12.5px;
+  }
+
+  .main-nav a {
+    padding: 5px 6px;
+  }
 }
 
 .nav-toggle {

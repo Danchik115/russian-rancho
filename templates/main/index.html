@@ -148,6 +148,135 @@
         </div>
       </section>
 
+      <!-- Сводные блоки по каждому формату (якоря на отдельные страницы) -->
+      <section id="families" class="section">
+        <div class="families-media" aria-hidden="true">
+          <video
+            class="families-video"
+            src="{% static 'assets/для-семей/family-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+        <div class="container section-split">
+          <div class="section-text">
+            <h2>Для семей</h2>
+            <p>
+              Идеальное место для отдыха с детьми и близкими на 2–4 часа или на целый день: животные, прогулки,
+              семейные программы и уютная атмосфера.
+            </p>
+            <ul class="bullet-list">
+              <li>Семейный выходной на ранчо</li>
+              <li>Знакомство с животными и кормление</li>
+              <li>Прогулка по территории и фотозоны</li>
+              <li>Сезонные активности и семейные фотодни</li>
+            </ul>
+            <div class="section-actions">
+              <a href="{% url 'main:families' %}" class="btn btn-primary">Все семейные программы</a>
+              <a href="#contacts" class="btn btn-ghost">Спросить про формат</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="kids" class="section section-light">
+        <div class="kids-media" aria-hidden="true">
+          <video
+            class="kids-video"
+            src="{% static 'assets/для-детей/kids-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+        <div class="container section-split">
+          <div class="section-text">
+            <h2>Для детей</h2>
+            <p>
+              Программы, которые подходят и для выходных с семьёй, и для будней: экскурсии, дни рождения, группы из
+              школ и детских садов.
+            </p>
+            <ul class="bullet-list">
+              <li>Юный фермер</li>
+              <li>Детские экскурсии на ферму</li>
+              <li>Дни рождения</li>
+              <li>Школьные и садовские группы</li>
+            </ul>
+            <div class="section-actions">
+              <a href="{% url 'main:kids' %}" class="btn btn-primary">Форматы для детей</a>
+              <a href="#contacts" class="btn btn-ghost">Уточнить детали</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="couples" class="section">
+        <div class="couples-media" aria-hidden="true">
+          <video
+            class="couples-video"
+            src="{% static 'assets/для-пар/couples-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+        <div class="container section-split">
+          <div class="section-text">
+            <h2>Для пар</h2>
+            <p>
+              Самый атмосферный раздел: свидания, пикники, фотосессии и особенные поводы на природе среди животных и
+              полей.
+            </p>
+            <ul class="bullet-list">
+              <li>Свидание на ранчо</li>
+              <li>Пикники и закаты</li>
+              <li>Фотосессии</li>
+              <li>Годовщины и предложения</li>
+            </ul>
+            <div class="section-actions">
+              <a href="{% url 'main:couples' %}" class="btn btn-primary">Форматы для пар</a>
+              <button type="button" class="btn btn-ghost" data-open="certificate-modal">Подарочный сертификат</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="groups" class="section section-light">
+        <div class="groups-media" aria-hidden="true">
+          <video
+            class="groups-video"
+            src="{% static 'assets/для-групп/groups-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+        <div class="container section-split">
+          <div class="section-text">
+            <h2>Для групп</h2>
+            <p>
+              Форматы для будней и организованных выездов: школьные группы, корпоративы, выпускные и семейные
+              компании.
+            </p>
+            <ul class="bullet-list">
+              <li>Школьные экскурсии</li>
+              <li>Дни рождения и выпускные</li>
+              <li>Корпоративы на природе</li>
+              <li>Туристические группы</li>
+            </ul>
+            <div class="section-actions">
+              <a href="{% url 'main:groups' %}" class="btn btn-primary">Форматы для групп</a>
+              <button type="button" class="btn btn-ghost" data-action="open-party-form">Провести праздник у нас</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Самые популярные программы (сводный блок) -->
       <section class="section">
         <div class="container">
@@ -334,42 +463,6 @@
         </div>
       </section>
 
-      <!-- Блок доверия -->
-      <section class="section section-light">
-        <div class="container">
-          <header class="section-header">
-            <h2>Нам доверяют отдых и важные события</h2>
-            <p>Короткие факты о формате отдыха на Русском Ранчо.</p>
-          </header>
-          <div class="trust-grid">
-            <article class="trust-card">
-              <div class="trust-number">2 + 3</div>
-              <h3>Объекта для брони</h3>
-              <p>2 домика и 3 беседки с отдельными страницами, фото и условиями.</p>
-            </article>
-            <article class="trust-card">
-              <div class="trust-number">5000 ₽</div>
-              <h3>Единая цена за сутки</h3>
-              <p>Прозрачная стоимость по всем объектам без сложной сетки тарифов.</p>
-            </article>
-            <article class="trust-card">
-              <div class="trust-number">5</div>
-              <h3>Форматов отдыха</h3>
-              <p>Для семей, детей, пар, групп и мероприятий на природе.</p>
-            </article>
-            <article class="trust-card">
-              <div class="trust-number">15–20 мин</div>
-              <h3>От Никольска</h3>
-              <p>Быстрый выезд на природу без долгой дороги и сложной логистики.</p>
-            </article>
-          </div>
-          <div class="section-actions">
-            <a href="https://yandex.ru/maps/-/CPBauB2w" target="_blank" rel="noopener" class="btn btn-outline">Отзывы на Яндекс Картах</a>
-            <button type="button" class="btn btn-primary" data-open="booking-modal">Оставить заявку</button>
-          </div>
-        </div>
-      </section>
-
       <!-- О нас пишут -->
       <section class="section">
         <div class="container">
@@ -518,47 +611,24 @@
         </div>
       </section>
 
-      <!-- Блок авторизации / подписка на предложения ко дню рождения -->
+      <!-- Блок личного кабинета -->
       <section id="auth" class="section section-light">
         <div class="container section-split">
           <div class="section-text">
-            <h2>Личный профиль гостя</h2>
-            <p>Заполните короткую форму, чтобы мы создали ваш профиль в нашей базе гостей.</p>
+            <h2>Личный кабинет</h2>
+            <p>Для гостей доступны два простых действия: регистрация нового аккаунта и вход в существующий кабинет.</p>
             <p>
-              Для чего это нужно: в день рождения мы сможем отправлять вам персональные предложения на отдых
-              в Telegram через нашего бота.
+              После входа вы отправляете заявку с уже предзаполненными данными профиля и не заполняете всё заново.
             </p>
             <ul class="bullet-list">
-              <li>Храним имя, фамилию, телефон и дату рождения</li>
-              <li>Используем данные только для связи и предложений от Русского Ранчо</li>
-              <li>Профиль можно обновить повторной отправкой формы</li>
+              <li>Регистрация по имени, фамилии, телефону, дате рождения и паролю</li>
+              <li>Вход по номеру телефона и паролю</li>
+              <li>Быстрая заявка из кабинета с данными профиля</li>
             </ul>
             <div class="section-actions">
-              <a href="{% url 'main:cabinet_login' %}" class="btn btn-secondary">Уже есть профиль? Войти</a>
+              <a href="{% url 'main:cabinet_register' %}" class="btn btn-primary">Зарегистрироваться</a>
+              <a href="{% url 'main:cabinet_login' %}" class="btn btn-secondary">Войти</a>
             </div>
-          </div>
-          <div class="section-form">
-            <form class="booking-form" id="birthday-subscribe-form">
-              <h3>Авторизация гостя</h3>
-              <label>
-                Имя
-                <input type="text" name="first_name" placeholder="Введите имя" required />
-              </label>
-              <label>
-                Фамилия
-                <input type="text" name="last_name" placeholder="Введите фамилию" required />
-              </label>
-              <label>
-                Номер телефона
-                <input type="tel" name="phone" placeholder="+7 ..." required />
-              </label>
-              <label>
-                Дата рождения
-                <input type="date" name="birth_date" required />
-              </label>
-              <button type="submit" class="btn btn-primary btn-full">Сохранить профиль</button>
-              <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
-            </form>
           </div>
         </div>
       </section>
@@ -577,135 +647,6 @@
             <a href="{% url 'main:gallery' %}#couples" class="gallery-item gallery-item-couples">Любимые гости</a>
             <a href="{% url 'main:gallery' %}#animals" class="gallery-item gallery-item-animals">Животные</a>
             <a href="{% url 'main:gallery' %}#events" class="gallery-item gallery-item-events">Мероприятия</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Сводные блоки по каждому формату (якоря на отдельные страницы) -->
-      <section id="families" class="section">
-        <div class="families-media" aria-hidden="true">
-          <video
-            class="families-video"
-            src="{% static 'assets/для-семей/family-background.mp4' %}"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
-        </div>
-        <div class="container section-split">
-          <div class="section-text">
-            <h2>Для семей</h2>
-            <p>
-              Идеальное место для отдыха с детьми и близкими на 2–4 часа или на целый день: животные, прогулки,
-              семейные программы и уютная атмосфера.
-            </p>
-            <ul class="bullet-list">
-              <li>Семейный выходной на ранчо</li>
-              <li>Знакомство с животными и кормление</li>
-              <li>Прогулка по территории и фотозоны</li>
-              <li>Сезонные активности и семейные фотодни</li>
-            </ul>
-            <div class="section-actions">
-              <a href="{% url 'main:families' %}" class="btn btn-primary">Все семейные программы</a>
-              <a href="#contacts" class="btn btn-ghost">Спросить про формат</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="kids" class="section section-light">
-        <div class="kids-media" aria-hidden="true">
-          <video
-            class="kids-video"
-            src="{% static 'assets/для-детей/kids-background.mp4' %}"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
-        </div>
-        <div class="container section-split">
-          <div class="section-text">
-            <h2>Для детей</h2>
-            <p>
-              Программы, которые подходят и для выходных с семьёй, и для будней: экскурсии, дни рождения, группы из
-              школ и детских садов.
-            </p>
-            <ul class="bullet-list">
-              <li>Юный фермер</li>
-              <li>Детские экскурсии на ферму</li>
-              <li>Дни рождения</li>
-              <li>Школьные и садовские группы</li>
-            </ul>
-            <div class="section-actions">
-              <a href="{% url 'main:kids' %}" class="btn btn-primary">Форматы для детей</a>
-              <a href="#contacts" class="btn btn-ghost">Уточнить детали</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="couples" class="section">
-        <div class="couples-media" aria-hidden="true">
-          <video
-            class="couples-video"
-            src="{% static 'assets/для-пар/couples-background.mp4' %}"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
-        </div>
-        <div class="container section-split">
-          <div class="section-text">
-            <h2>Для пар</h2>
-            <p>
-              Самый атмосферный раздел: свидания, пикники, фотосессии и особенные поводы на природе среди животных и
-              полей.
-            </p>
-            <ul class="bullet-list">
-              <li>Свидание на ранчо</li>
-              <li>Пикники и закаты</li>
-              <li>Фотосессии</li>
-              <li>Годовщины и предложения</li>
-            </ul>
-            <div class="section-actions">
-              <a href="{% url 'main:couples' %}" class="btn btn-primary">Форматы для пар</a>
-              <button type="button" class="btn btn-ghost" data-open="certificate-modal">Подарочный сертификат</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="groups" class="section section-light">
-        <div class="groups-media" aria-hidden="true">
-          <video
-            class="groups-video"
-            src="{% static 'assets/для-групп/groups-background.mp4' %}"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
-        </div>
-        <div class="container section-split">
-          <div class="section-text">
-            <h2>Для групп</h2>
-            <p>
-              Форматы для будней и организованных выездов: школьные группы, корпоративы, выпускные и семейные
-              компании.
-            </p>
-            <ul class="bullet-list">
-              <li>Школьные экскурсии</li>
-              <li>Дни рождения и выпускные</li>
-              <li>Корпоративы на природе</li>
-              <li>Туристические группы</li>
-            </ul>
-            <div class="section-actions">
-              <a href="{% url 'main:groups' %}" class="btn btn-primary">Форматы для групп</a>
-              <button type="button" class="btn btn-ghost" data-action="open-party-form">Провести праздник у нас</button>
-            </div>
           </div>
         </div>
       </section>
@@ -891,7 +832,7 @@
             </div>
           </div>
           <div class="section-form">
-            <form class="booking-form">
+            <form class="booking-form" id="home-booking-form">
               <h3>Оставить заявку</h3>
               <label>
                 Имя

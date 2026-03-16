@@ -199,9 +199,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  document.querySelectorAll(".booking-form").forEach((formEl) => {
-    if (formEl.id === "certificate-form" || formEl.id === "birthday-subscribe-form") return;
-    setupBookingForm(formEl);
+  const bookingFormIds = ["booking-modal-form", "home-booking-form"];
+  bookingFormIds.forEach((formId) => {
+    const formEl = document.getElementById(formId);
+    if (formEl) {
+      setupBookingForm(formEl);
+    }
   });
 
   const certificateForm = document.getElementById("certificate-form");
@@ -267,51 +270,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const birthdaySubscribeForm = document.getElementById("birthday-subscribe-form");
-  if (birthdaySubscribeForm) {
-    birthdaySubscribeForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(birthdaySubscribeForm);
-      const body = {
-        first_name: formData.get("first_name") || "",
-        last_name: formData.get("last_name") || "",
-        phone: formData.get("phone") || "",
-        birth_date: formData.get("birth_date") || "",
-      };
-
-      const submitBtn = birthdaySubscribeForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn?.textContent;
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Сохранение…";
-      }
-
-      const apiBase = window.FORM_API_URL || "";
-      const apiUrl = apiBase + "/api/birthday-subscribe";
-
-      try {
-        const res = await fetch(apiUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
-        const data = await res.json().catch(() => ({}));
-
-        if (res.ok && data.ok) {
-          alert("Профиль сохранен. Спасибо! Мы отправим персональное предложение в Telegram ко дню рождения.");
-          birthdaySubscribeForm.reset();
-        } else {
-          throw new Error(data.error || "Ошибка сохранения");
-        }
-      } catch (err) {
-        alert("Не удалось сохранить профиль. Проверьте поля и попробуйте еще раз.");
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText || "Сохранить профиль";
-        }
-      }
-    });
-  }
 });
 

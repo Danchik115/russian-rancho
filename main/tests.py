@@ -38,10 +38,9 @@ class MainPagesTests(TestCase):
                 response = self.client.get(url)
                 self.assertEqual(response.status_code, 200)
 
-    def test_home_contains_auth_and_trust_blocks(self):
+    def test_home_contains_key_sections(self):
         response = self.client.get(reverse("main:home"))
-        self.assertContains(response, "Личный профиль гостя")
-        self.assertContains(response, "Нам доверяют отдых и важные события")
+        self.assertContains(response, "Личный кабинет")
         self.assertContains(response, "О нас пишут и нас рекомендуют")
 
 
@@ -91,93 +90,6 @@ class TelegramApiTests(TestCase):
         )
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.json()["error"], "Failed to send to Telegram")
-
-
-class BirthdaySubscribeApiTests(TestCase):
-    def test_birthday_subscribe_rejects_get(self):
-        response = self.client.get(reverse("main:birthday_subscribe_api"))
-        self.assertEqual(response.status_code, 405)
-
-    def test_birthday_subscribe_creates_record(self):
-        payload = {
-            "first_name": "Иван",
-            "last_name": "Петров",
-            "phone": "+79990000000",
-            "birth_date": "2000-05-12",
-        }
-        response = self.client.post(
-            reverse("main:birthday_subscribe_api"),
-            data=json.dumps(payload),
-            content_type="application/json",
-        )
-        self.assertEqual(response.status_code, 200)
-        data = response.json()
-        self.assertTrue(data["ok"])
-        self.assertTrue(data["created"])
-        self.assertEqual(BirthdaySubscriber.objects.count(), 1)
-        subscriber = BirthdaySubscriber.objects.get(phone="+79990000000")
-        self.assertEqual(subscriber.first_name, "Иван")
-        self.assertEqual(subscriber.last_name, "Петров")
-
-    def test_birthday_subscribe_updates_existing_by_phone(self):
-        BirthdaySubscriber.objects.create(
-            first_name="Старое",
-            last_name="Имя",
-            phone="+79990000000",
-            birth_date=date(1995, 1, 1),
-        )
-        payload = {
-            "first_name": "Новое",
-            "last_name": "Имя",
-            "phone": "+79990000000",
-            "birth_date": "1996-02-02",
-        }
-        response = self.client.post(
-            reverse("main:birthday_subscribe_api"),
-            data=json.dumps(payload),
-            content_type="application/json",
-        )
-        self.assertEqual(response.status_code, 200)
-        data = response.json()
-        self.assertTrue(data["ok"])
-        self.assertFalse(data["created"])
-        self.assertEqual(BirthdaySubscriber.objects.count(), 1)
-        subscriber = BirthdaySubscriber.objects.get(phone="+79990000000")
-        self.assertEqual(subscriber.first_name, "Новое")
-        self.assertEqual(subscriber.birth_date, date(1996, 2, 2))
-
-    def test_birthday_subscribe_validation_errors(self):
-        response = self.client.post(
-            reverse("main:birthday_subscribe_api"),
-            data=json.dumps({"first_name": "Иван"}),
-            content_type="application/json",
-        )
-        self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.json()["error"], "All fields are required")
-
-        response = self.client.post(
-            reverse("main:birthday_subscribe_api"),
-            data=json.dumps(
-                {
-                    "first_name": "Иван",
-                    "last_name": "Петров",
-                    "phone": "+79990000000",
-                    "birth_date": "12-05-2000",
-                }
-            ),
-            content_type="application/json",
-        )
-        self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.json()["error"], "Birth date must be YYYY-MM-DD")
-
-    def test_birthday_subscribe_invalid_json(self):
-        response = self.client.post(
-            reverse("main:birthday_subscribe_api"),
-            data="{bad_json",
-            content_type="application/json",
-        )
-        self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.json()["error"], "Invalid JSON body")
 
 
 class TelegramUtilsTests(TestCase):

@@ -150,6 +150,18 @@ def cabinet_register_page(request):
                 birth_date=birth_date,
             )
 
+        registration_message = "\n".join(
+            [
+                "🆕 Новая регистрация в личном кабинете",
+                "",
+                f"👤 Имя: {subscriber.first_name} {subscriber.last_name}",
+                f"📞 Телефон: {subscriber.phone}",
+                f"🎂 Дата рождения: {subscriber.birth_date.isoformat()}",
+            ]
+        )
+        # Нотификация не должна блокировать регистрацию, если Telegram временно недоступен.
+        send_telegram_message(registration_message)
+
         login(request, user)
         messages.success(request, "Регистрация выполнена. Добро пожаловать в личный кабинет.")
         return redirect("main:cabinet")
@@ -288,42 +300,3 @@ def telegram_api(request_obj):
         return JsonResponse({"error": "Failed to send to Telegram", "details": description}, status=500)
 
     return JsonResponse({"ok": True})
-
-
-@csrf_exempt
-@require_POST
-def birthday_subscribe_api(request_obj):
-    try:
-        body = json.loads(request_obj.body.decode("utf-8") or "{}")
-    except json.JSONDecodeError:
-        return JsonResponse({"error": "Invalid JSON body"}, status=400)
-
-    first_name = str(body.get("first_name", "")).strip()
-    last_name = str(body.get("last_name", "")).strip()
-    phone = str(body.get("phone", "")).strip()
-    birth_date_raw = str(body.get("birth_date", "")).strip()
-
-    if not first_name or not last_name or not phone or not birth_date_raw:
-        return JsonResponse({"error": "All fields are required"}, status=400)
-
-    if len(first_name) > 80 or len(last_name) > 80:
-        return JsonResponse({"error": "First name and last name are too long"}, status=400)
-
-    if len(phone) > 32:
-        return JsonResponse({"error": "Phone is too long"}, status=400)
-
-    try:
-        birth_date = date.fromisoformat(birth_date_raw)
-    except ValueError:
-        return JsonResponse({"error": "Birth date must be YYYY-MM-DD"}, status=400)
-
-    subscriber, created = BirthdaySubscriber.objects.update_or_create(
-        phone=phone,
-        defaults={
-            "first_name": first_name,
-            "last_name": last_name,
-            "birth_date": birth_date,
-        },
-    )
-
-    return JsonResponse({"ok": True, "created": created, "id": subscriber.id})

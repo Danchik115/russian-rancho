@@ -6,7 +6,6 @@ app_name = 'main'
 urlpatterns = [
     path('', views.home, name='home'),
     path('api/telegram', views.telegram_api, name='telegram_api'),
-    path('api/birthday-subscribe', views.birthday_subscribe_api, name='birthday_subscribe_api'),
     path('cabinet/register/', views.cabinet_register_page, name='cabinet_register'),
     path('cabinet/login/', views.cabinet_login_page, name='cabinet_login'),
     path('cabinet/logout/', views.cabinet_logout, name='cabinet_logout'),
