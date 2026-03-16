@@ -14,7 +14,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Модальное окно подарочного сертификата
+  // Модальные окна (запись + сертификат)
+  const openBookingModal = (interest = "") => {
+    const modal = document.getElementById("booking-modal");
+    if (!modal) return;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    const form = document.getElementById("booking-modal-form");
+    const interestSelect = form?.querySelector('select[name="interest"]');
+    if (interestSelect && interest) {
+      interestSelect.value = interest;
+    }
+    setTimeout(() => {
+      form?.querySelector('input[name="name"]')?.focus();
+    }, 120);
+  };
+  const closeBookingModal = () => {
+    const modal = document.getElementById("booking-modal");
+    if (modal) {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+  };
+
   const openCertificateModal = () => {
     const modal = document.getElementById("certificate-modal");
     if (modal) {
@@ -31,14 +56,28 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "";
     }
   };
+  document.querySelectorAll("[data-open=\"booking-modal\"]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      openBookingModal(el.dataset.interest || "");
+    });
+  });
   document.querySelectorAll("[data-open=\"certificate-modal\"]").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
       openCertificateModal();
     });
   });
+  document.querySelectorAll("[data-close=\"booking-modal\"]").forEach((el) => {
+    el.addEventListener("click", closeBookingModal);
+  });
   document.querySelectorAll("[data-close=\"certificate-modal\"]").forEach((el) => {
     el.addEventListener("click", closeCertificateModal);
+  });
+  document.getElementById("booking-modal")?.addEventListener("click", (e) => {
+    if (e.target.id === "booking-modal" || e.target.classList.contains("modal-backdrop")) {
+      closeBookingModal();
+    }
   });
   document.getElementById("certificate-modal")?.addEventListener("click", (e) => {
     if (e.target.id === "certificate-modal" || e.target.classList.contains("modal-backdrop")) {
@@ -47,7 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
+      const bookingModal = document.getElementById("booking-modal");
       const modal = document.getElementById("certificate-modal");
+      if (bookingModal?.classList.contains("is-open")) closeBookingModal();
       if (modal?.classList.contains("is-open")) closeCertificateModal();
     }
   });
@@ -56,6 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
     anchor.addEventListener("click", (e) => {
       const targetId = anchor.getAttribute("href");
       if (!targetId || targetId === "#") return;
+
+      if (targetId === "#contacts") {
+        e.preventDefault();
+        openBookingModal(anchor.dataset.interest || "");
+        header?.classList.remove("nav-open");
+        return;
+      }
 
       const el = document.querySelector(targetId);
       if (!el) return;
@@ -74,8 +122,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const bookingForm = document.querySelector(".booking-form");
-  if (bookingForm) {
+  // Handle links like "/#contacts" on the home page.
+  document.querySelectorAll('a[href$="#contacts"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href") || "";
+      if (!href.endsWith("#contacts")) return;
+      e.preventDefault();
+      openBookingModal(anchor.dataset.interest || "");
+    });
+  });
+
+  document.querySelectorAll('[data-action="open-party-form"]').forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      openBookingModal("groups");
+    });
+  });
+
+  const setupBookingForm = (bookingForm) => {
     bookingForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
@@ -110,6 +174,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (res.ok && data.ok) {
           alert("Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.");
           bookingForm.reset();
+          if (bookingForm.id === "booking-modal-form") {
+            closeBookingModal();
+          }
         } else {
           throw new Error(data.error || "Ошибка отправки");
         }
@@ -130,7 +197,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
-  }
+  };
+
+  document.querySelectorAll(".booking-form").forEach((formEl) => {
+    if (formEl.id === "certificate-form" || formEl.id === "birthday-subscribe-form") return;
+    setupBookingForm(formEl);
+  });
 
   const certificateForm = document.getElementById("certificate-form");
   if (certificateForm) {
@@ -190,6 +262,53 @@ document.addEventListener("DOMContentLoaded", () => {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = originalText || "Отправить заявку на сертификат";
+        }
+      }
+    });
+  }
+
+  const birthdaySubscribeForm = document.getElementById("birthday-subscribe-form");
+  if (birthdaySubscribeForm) {
+    birthdaySubscribeForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(birthdaySubscribeForm);
+      const body = {
+        first_name: formData.get("first_name") || "",
+        last_name: formData.get("last_name") || "",
+        phone: formData.get("phone") || "",
+        birth_date: formData.get("birth_date") || "",
+      };
+
+      const submitBtn = birthdaySubscribeForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn?.textContent;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Сохранение…";
+      }
+
+      const apiBase = window.FORM_API_URL || "";
+      const apiUrl = apiBase + "/api/birthday-subscribe";
+
+      try {
+        const res = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.ok) {
+          alert("Профиль сохранен. Спасибо! Мы отправим персональное предложение в Telegram ко дню рождения.");
+          birthdaySubscribeForm.reset();
+        } else {
+          throw new Error(data.error || "Ошибка сохранения");
+        }
+      } catch (err) {
+        alert("Не удалось сохранить профиль. Проверьте поля и попробуйте еще раз.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText || "Сохранить профиль";
         }
       }
     });

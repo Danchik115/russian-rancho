@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация в личном кабинете — Русское Ранчо{% endblock %}
+{% block meta_description %}Регистрация личного кабинета Русского Ранчо: имя, фамилия, телефон, дата рождения и пароль.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container section-split">
+    <div class="section-text">
+      <h1>Регистрация личного кабинета</h1>
+      <p>После регистрации вы сможете входить в личный кабинет и отправлять заявки без повторного ввода личных данных.</p>
+      <p>Если вы уже заполняли профиль на главной, мы автоматически свяжем его с вашим аккаунтом.</p>
+      <div class="section-actions">
+        <a href="{% url 'main:cabinet_login' %}" class="btn btn-ghost">Уже есть аккаунт? Войти</a>
+      </div>
+    </div>
+    <div class="section-form">
+      {% if messages %}
+        {% for message in messages %}
+          <p class="form-note">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <form class="booking-form" method="post">
+        {% csrf_token %}
+        <h3>Регистрация</h3>
+        <label>
+          Имя
+          <input type="text" name="first_name" placeholder="Введите имя" required />
+        </label>
+        <label>
+          Фамилия
+          <input type="text" name="last_name" placeholder="Введите фамилию" required />
+        </label>
+        <label>
+          Номер телефона
+          <input type="tel" name="phone" placeholder="+7 ..." required />
+        </label>
+        <label>
+          Дата рождения
+          <input type="date" name="birth_date" required />
+        </label>
+        <label>
+          Пароль
+          <input type="password" name="password" placeholder="Минимум 6 символов" required />
+        </label>
+        <label>
+          Повторите пароль
+          <input type="password" name="password_confirm" placeholder="Повторите пароль" required />
+        </label>
+        <button type="submit" class="btn btn-primary btn-full">Создать аккаунт</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

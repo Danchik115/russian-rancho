@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Личный кабинет — Русское Ранчо{% endblock %}
+{% block meta_description %}Личный кабинет гостя Русского Ранчо: предзаполненные данные и быстрая отправка заявки.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container section-split">
+    <div class="section-text">
+      <h1>Ваш личный кабинет</h1>
+      <p>Данные профиля уже сохранены. Вы можете отправить новую заявку без повторного ввода имени и телефона.</p>
+      <ul class="bullet-list">
+        <li><strong>Имя:</strong> {{ subscriber.first_name }}</li>
+        <li><strong>Фамилия:</strong> {{ subscriber.last_name }}</li>
+        <li><strong>Телефон:</strong> {{ subscriber.phone }}</li>
+        <li><strong>Дата рождения:</strong> {{ subscriber.birth_date|date:"d.m.Y" }}</li>
+      </ul>
+      <div class="section-actions">
+        <a href="{% url 'main:cabinet_logout' %}" class="btn btn-ghost">Выйти</a>
+      </div>
+    </div>
+    <div class="section-form">
+      {% if messages %}
+        {% for message in messages %}
+          <p class="form-note">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <form class="booking-form" method="post">
+        {% csrf_token %}
+        <h3>Отправить заявку</h3>
+        <label>
+          Что вас интересует
+          <select name="interest" required>
+            <option value="">Выберите вариант</option>
+            <option value="family">Семейные программы</option>
+            <option value="kids">Форматы для детей</option>
+            <option value="couples">Свидания и пикники</option>
+            <option value="groups">Групповые выезды</option>
+            <option value="events">Мероприятия и афиша</option>
+            <option value="nedvizhimost">Теплые и уютные места для вас (домики, беседки)</option>
+            <option value="certificate">Подарочный сертификат</option>
+            <option value="prices">Цены и условия</option>
+            <option value="other">Другое</option>
+          </select>
+        </label>
+        <label>
+          Дата
+          <input type="date" name="date" />
+        </label>
+        <label>
+          Количество человек
+          <input type="number" name="people" min="1" placeholder="Например, 4" />
+        </label>
+        <label>
+          Комментарий
+          <textarea name="comment" rows="3" placeholder="Детали заявки"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

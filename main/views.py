@@ -1,12 +1,17 @@
 import json
-import os
-from urllib import error, request
+from datetime import date
 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib import messages
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView
+from .models import BirthdaySubscriber
+from .telegram_utils import send_telegram_message
 
 
 class PageView(TemplateView):
@@ -59,13 +64,183 @@ def nedvizhimost_page(request):
     return render(request, 'main/nedvizhimost.html', {'active_nav': 'nedvizhimost'})
 
 
+def domik_u_lesa_page(request):
+    return render(request, "main/properties/domik_u_lesa.html", {"active_nav": None})
+
+
+def domik_u_pruda_page(request):
+    return render(request, "main/properties/domik_u_pruda.html", {"active_nav": None})
+
+
+def teplaya_besedka_1_page(request):
+    return render(request, "main/properties/teplaya_besedka_1.html", {"active_nav": None})
+
+
+def teplaya_besedka_2_page(request):
+    return render(request, "main/properties/teplaya_besedka_2.html", {"active_nav": None})
+
+
+def letnyaya_besedka_page(request):
+    return render(request, "main/properties/letnyaya_besedka.html", {"active_nav": None})
+
+
+def _get_logged_subscriber(request):
+    if not request.user.is_authenticated:
+        return None
+    try:
+        return BirthdaySubscriber.objects.get(user=request.user)
+    except BirthdaySubscriber.DoesNotExist:
+        return None
+
+
+def cabinet_register_page(request):
+    if request.user.is_authenticated and _get_logged_subscriber(request):
+        return redirect("main:cabinet")
+
+    if request.method == "POST":
+        first_name = str(request.POST.get("first_name", "")).strip()
+        last_name = str(request.POST.get("last_name", "")).strip()
+        phone = str(request.POST.get("phone", "")).strip()
+        birth_date_raw = str(request.POST.get("birth_date", "")).strip()
+        password = str(request.POST.get("password", ""))
+        password_confirm = str(request.POST.get("password_confirm", ""))
+
+        if not first_name or not last_name or not phone or not birth_date_raw or not password:
+            messages.error(request, "Заполните все поля.")
+            return render(request, "main/cabinet_register.html", {"active_nav": None})
+
+        if password != password_confirm:
+            messages.error(request, "Пароли не совпадают.")
+            return render(request, "main/cabinet_register.html", {"active_nav": None})
+
+        try:
+            birth_date = date.fromisoformat(birth_date_raw)
+        except ValueError:
+            messages.error(request, "Неверный формат даты рождения.")
+            return render(request, "main/cabinet_register.html", {"active_nav": None})
+
+        if User.objects.filter(username=phone).exists():
+            messages.error(request, "Пользователь с таким номером уже существует. Войдите в кабинет.")
+            return redirect("main:cabinet_login")
+
+        subscriber = BirthdaySubscriber.objects.filter(phone=phone).first()
+        if subscriber and subscriber.birth_date != birth_date:
+            messages.error(request, "Профиль с таким телефоном уже есть, но дата рождения не совпадает.")
+            return render(request, "main/cabinet_register.html", {"active_nav": None})
+
+        user = User.objects.create_user(
+            username=phone,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+        )
+
+        if subscriber:
+            subscriber.first_name = first_name
+            subscriber.last_name = last_name
+            subscriber.birth_date = birth_date
+            subscriber.user = user
+            subscriber.save()
+        else:
+            subscriber = BirthdaySubscriber.objects.create(
+                user=user,
+                first_name=first_name,
+                last_name=last_name,
+                phone=phone,
+                birth_date=birth_date,
+            )
+
+        login(request, user)
+        messages.success(request, "Регистрация выполнена. Добро пожаловать в личный кабинет.")
+        return redirect("main:cabinet")
+
+    return render(request, "main/cabinet_register.html", {"active_nav": None})
+
+
+def cabinet_login_page(request):
+    if request.user.is_authenticated and _get_logged_subscriber(request):
+        return redirect("main:cabinet")
+
+    next_url = request.GET.get("next", "")
+
+    if request.method == "POST":
+        phone = str(request.POST.get("phone", "")).strip()
+        password = str(request.POST.get("password", ""))
+        if not phone or not password:
+            messages.error(request, "Введите номер телефона и пароль.")
+            return render(request, "main/cabinet_login.html", {"active_nav": None})
+
+        user = authenticate(request, username=phone, password=password)
+        if not user:
+            messages.error(request, "Неверный номер телефона или пароль.")
+            return render(request, "main/cabinet_login.html", {"active_nav": None})
+
+        if not BirthdaySubscriber.objects.filter(user=user).exists():
+            messages.error(request, "Для этого пользователя не найден профиль. Пройдите регистрацию.")
+            return render(request, "main/cabinet_login.html", {"active_nav": None})
+
+        login(request, user)
+        messages.success(request, "Вы успешно вошли в личный кабинет.")
+        if next_url.startswith("/"):
+            return redirect(next_url)
+        return redirect("main:cabinet")
+
+    return render(request, "main/cabinet_login.html", {"active_nav": None})
+
+
+def cabinet_logout(request):
+    logout(request)
+    messages.success(request, "Вы вышли из личного кабинета.")
+    return redirect("main:home")
+
+
+def cabinet_page(request):
+    subscriber = _get_logged_subscriber(request)
+    if not subscriber:
+        return redirect(f"{reverse('main:cabinet_login')}?next={reverse('main:cabinet')}")
+
+    if request.method == "POST":
+        interest = str(request.POST.get("interest", "")).strip()
+        visit_date = str(request.POST.get("date", "")).strip()
+        people = str(request.POST.get("people", "")).strip()
+        comment = str(request.POST.get("comment", "")).strip()
+
+        if not interest:
+            messages.error(request, "Выберите, что вас интересует.")
+            return render(request, "main/cabinet.html", {"active_nav": None, "subscriber": subscriber})
+
+        interest_label = INTEREST_LABELS.get(interest, interest)
+        lines = [
+            "🟣 Заявка из личного кабинета Русского Ранчо",
+            "",
+            f"👤 Имя: {subscriber.first_name} {subscriber.last_name}",
+            f"📞 Телефон: {subscriber.phone}",
+            f"🎂 Дата рождения: {subscriber.birth_date.isoformat()}",
+            f"🎯 Интересует: {interest_label}",
+        ]
+        if visit_date:
+            lines.append(f"📅 Дата визита: {visit_date}")
+        if people:
+            lines.append(f"👥 Количество человек: {people}")
+        if comment:
+            lines.append(f"💬 Комментарий: {comment}")
+
+        ok, details = send_telegram_message("\n".join(lines))
+        if ok:
+            messages.success(request, "Заявка отправлена. Мы скоро свяжемся с вами.")
+            return redirect("main:cabinet")
+        messages.error(request, f"Не удалось отправить заявку: {details}")
+
+    return render(request, "main/cabinet.html", {"active_nav": None, "subscriber": subscriber})
+
+
 INTEREST_LABELS = {
     "family": "Семейные программы",
     "kids": "Форматы для детей",
     "couples": "Свидания и пикники",
     "groups": "Групповые выезды",
     "events": "Мероприятия и афиша",
-    "nedvizhimost": "Тепло и уют для вас (домики, беседки)",
+    "nedvizhimost": "Теплые и уютные места для вас (домики, беседки)",
     "certificate": "Подарочный сертификат",
     "prices": "Цены и условия",
     "other": "Другое",
@@ -106,41 +281,49 @@ def telegram_api(request_obj):
     except json.JSONDecodeError:
         return JsonResponse({"error": "Invalid JSON body"}, status=400)
 
-    bot_token = os.getenv("TELEGRAM_BOT_TOKEN", "")
-    chat_id = os.getenv("TELEGRAM_CHAT_ID", "")
-    if not bot_token or not chat_id:
-        return JsonResponse({"error": "Server not configured for Telegram"}, status=500)
-
     message = _build_message(body)
-    api_base = os.getenv("TELEGRAM_API_BASE", "https://api.telegram.org").rstrip("/")
-
-    payload = json.dumps(
-        {
-            "chat_id": chat_id,
-            "text": message,
-            "parse_mode": "HTML",
-            "disable_web_page_preview": True,
-        }
-    ).encode("utf-8")
-
-    tg_req = request.Request(
-        f"{api_base}/bot{bot_token}/sendMessage",
-        data=payload,
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-
-    try:
-        with request.urlopen(tg_req, timeout=15) as tg_res:
-            tg_data = json.loads(tg_res.read().decode("utf-8") or "{}")
-    except error.URLError as exc:
-        reason = str(getattr(exc, "reason", exc))
-        return JsonResponse({"error": "Failed to send to Telegram", "details": reason}, status=500)
-
-    if not tg_data.get("ok"):
-        description = ""
-        if isinstance(tg_data.get("description"), str):
-            description = tg_data["description"]
+    ok, details = send_telegram_message(message)
+    if not ok:
+        description = details if isinstance(details, str) else ""
         return JsonResponse({"error": "Failed to send to Telegram", "details": description}, status=500)
 
     return JsonResponse({"ok": True})
+
+
+@csrf_exempt
+@require_POST
+def birthday_subscribe_api(request_obj):
+    try:
+        body = json.loads(request_obj.body.decode("utf-8") or "{}")
+    except json.JSONDecodeError:
+        return JsonResponse({"error": "Invalid JSON body"}, status=400)
+
+    first_name = str(body.get("first_name", "")).strip()
+    last_name = str(body.get("last_name", "")).strip()
+    phone = str(body.get("phone", "")).strip()
+    birth_date_raw = str(body.get("birth_date", "")).strip()
+
+    if not first_name or not last_name or not phone or not birth_date_raw:
+        return JsonResponse({"error": "All fields are required"}, status=400)
+
+    if len(first_name) > 80 or len(last_name) > 80:
+        return JsonResponse({"error": "First name and last name are too long"}, status=400)
+
+    if len(phone) > 32:
+        return JsonResponse({"error": "Phone is too long"}, status=400)
+
+    try:
+        birth_date = date.fromisoformat(birth_date_raw)
+    except ValueError:
+        return JsonResponse({"error": "Birth date must be YYYY-MM-DD"}, status=400)
+
+    subscriber, created = BirthdaySubscriber.objects.update_or_create(
+        phone=phone,
+        defaults={
+            "first_name": first_name,
+            "last_name": last_name,
+            "birth_date": birth_date,
+        },
+    )
+
+    return JsonResponse({"ok": True, "created": created, "id": subscriber.id})

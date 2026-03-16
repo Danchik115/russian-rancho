@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Беседка летняя — Русское Ранчо{% endblock %}
+{% block meta_description %}Летняя беседка на Русском Ранчо: цена 5000 ₽/сутки, вместимость до 10 человек, фото и условия бронирования.{% endblock %}
+{% block main_attr %}{% endblock %}
+
+{% block content %}
+<section class="section hero hero-page">
+  <div class="hero-media hero-media-page hero-media-about"></div>
+  <div class="container hero-content">
+    <p class="hero-kicker">Недвижимость</p>
+    <h1>Беседка летняя</h1>
+    <p class="hero-subtitle">Открытая летняя беседка — вид на территорию и природу, отдых в тёплую погоду.</p>
+    <div class="hero-actions">
+      <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Забронировать</a>
+      <a href="{% url 'main:nedvizhimost' %}" class="btn btn-outline">Все объекты</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="container">
+    <div class="property-card">
+      <h2>Условия</h2>
+      <ul class="property-meta">
+        <li><strong>Цена:</strong> 5000 ₽ / сутки</li>
+        <li><strong>Вместимость:</strong> до 10 человек</li>
+      </ul>
+      <p class="property-includes-title">Что входит:</p>
+      <ul class="property-includes">
+        <li>Мангальная зона</li>
+        <li>Помощь в оформлении (при необходимости)</li>
+        <li>Музыкальное сопровождение</li>
+      </ul>
+    </div>
+    <div class="object-gallery">
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-08-17.jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-14%20(2).jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-14.jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-15.jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-17.jpg' %}" alt="Беседка летняя" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

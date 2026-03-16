@@ -26,15 +26,16 @@
             <div class="hero-pill">15–20 минут от Никольска</div>
             <div class="hero-pill">Подходит для детей и взрослых</div>
           </div>
-          <div class="hero-booking">
-            <p class="hero-booking-title">Быстрая бронь</p>
-            <div class="hero-booking-links">
-              <a href="{% url 'main:nedvizhimost' %}#domik-u-lesa" class="hero-booking-link">Домик у леса</a>
-              <a href="{% url 'main:nedvizhimost' %}#domik-u-pruda" class="hero-booking-link">Домик у пруда</a>
-              <a href="{% url 'main:nedvizhimost' %}#teplaya-besedka-1" class="hero-booking-link">Тёплая беседка 1</a>
-              <a href="{% url 'main:nedvizhimost' %}#teplaya-besedka-2" class="hero-booking-link">Тёплая беседка 2</a>
-              <a href="{% url 'main:nedvizhimost' %}#letnyaya-besedka" class="hero-booking-link">Беседка летняя</a>
-            </div>
+        </div>
+      </section>
+
+      <!-- Пшеничное поле: визуальное продолжение главного экрана -->
+      <section class="section section-wheat">
+        <div class="wheat-banner">
+          <video class="wheat-video" src="{% static 'assets/главная/wheat-field.mp4' %}" autoplay muted loop playsinline></video>
+          <div class="wheat-content">
+            <p class="wheat-kicker">Русское Ранчо</p>
+            <h2>Тишина, простор и природа</h2>
           </div>
         </div>
       </section>
@@ -76,6 +77,73 @@
               <p>Мастер-классы, сезонные праздники, кино на природе, тематические дни.</p>
               <span class="format-link">Открыть афишу</span>
             </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Виджеты недвижимости -->
+      <section id="nedvizhimost" class="section">
+        <div class="nedvizhimost-media" aria-hidden="true">
+          <video
+            class="nedvizhimost-video"
+            src="{% static 'assets/nedvizhimost/camp-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+        <div class="container">
+          <header class="section-header">
+            <h2>Теплые и уютные места для вас</h2>
+            <p>Домики и беседки с единой ценой 5000 ₽ за сутки.</p>
+          </header>
+          <div class="property-grid">
+            <article class="property-card">
+              <img class="property-card-image" src="{% static 'assets/nedvizhimost/domik-u-lesa/photo_2026-03-15_13-17-46.jpg' %}" alt="Домик у леса" loading="lazy" />
+              <h3>Домик у леса</h3>
+              <ul class="property-meta">
+                <li><strong>Цена:</strong> 5000 ₽ / сутки</li>
+                <li><strong>Вместимость:</strong> до 4 человек</li>
+              </ul>
+              <a href="{% url 'main:domik_u_lesa' %}" class="btn btn-secondary">Подробнее</a>
+            </article>
+            <article class="property-card">
+              <img class="property-card-image" src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-39.jpg' %}" alt="Домик у пруда" loading="lazy" />
+              <h3>Домик у пруда</h3>
+              <ul class="property-meta">
+                <li><strong>Цена:</strong> 5000 ₽ / сутки</li>
+                <li><strong>Вместимость:</strong> до 6 человек</li>
+              </ul>
+              <a href="{% url 'main:domik_u_pruda' %}" class="btn btn-secondary">Подробнее</a>
+            </article>
+            <article class="property-card">
+              <img class="property-card-image" src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-25-16.jpg' %}" alt="Тёплая беседка 1" loading="lazy" />
+              <h3>Тёплая беседка 1</h3>
+              <ul class="property-meta">
+                <li><strong>Цена:</strong> 5000 ₽ / сутки</li>
+                <li><strong>Вместимость:</strong> до 20 человек</li>
+              </ul>
+              <a href="{% url 'main:teplaya_besedka_1' %}" class="btn btn-secondary">Подробнее</a>
+            </article>
+            <article class="property-card">
+              <img class="property-card-image" src="{% static 'assets/nedvizhimost/teplaya-besedka-2/photo_2026-03-15_13-17-33.jpg' %}" alt="Тёплая беседка 2" loading="lazy" />
+              <h3>Тёплая беседка 2</h3>
+              <ul class="property-meta">
+                <li><strong>Цена:</strong> 5000 ₽ / сутки</li>
+                <li><strong>Вместимость:</strong> до 25 человек</li>
+              </ul>
+              <a href="{% url 'main:teplaya_besedka_2' %}" class="btn btn-secondary">Подробнее</a>
+            </article>
+            <article class="property-card">
+              <img class="property-card-image" src="{% static 'assets/nedvizhimost/letnyaya-besedka/photo_2026-03-15_13-25-17.jpg' %}" alt="Беседка летняя" loading="lazy" />
+              <h3>Беседка летняя</h3>
+              <ul class="property-meta">
+                <li><strong>Цена:</strong> 5000 ₽ / сутки</li>
+                <li><strong>Вместимость:</strong> до 10 человек</li>
+              </ul>
+              <a href="{% url 'main:letnyaya_besedka' %}" class="btn btn-secondary">Подробнее</a>
+            </article>
           </div>
         </div>
       </section>
@@ -159,6 +227,78 @@
         </div>
       </section>
 
+      <!-- Сценарии мероприятий -->
+      <section class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Сценарии мероприятий</h2>
+            <p>Готовые форматы, которые мы поможем провести под ключ.</p>
+          </header>
+          <div class="cards-grid cards-grid-3">
+            <article class="program-card">
+              <div class="program-tag">Праздники</div>
+              <h3>День рождения на ранчо</h3>
+              <p>Праздник с животными, прогулкой, фотозоной и программой для гостей.</p>
+              <ul class="program-meta">
+                <li>Формат: детский или семейный</li>
+                <li>Длительность: от 3 часов</li>
+              </ul>
+              <button type="button" class="btn btn-secondary" data-open="booking-modal" data-interest="groups">Получить программу</button>
+            </article>
+            <article class="program-card">
+              <div class="program-tag">Команды</div>
+              <h3>Корпоратив на природе</h3>
+              <p>Выезд с уютной зоной, активностями, общим столом и вечерним сценарием.</p>
+              <ul class="program-meta">
+                <li>Формат: компании и команды</li>
+                <li>Длительность: 4–8 часов</li>
+              </ul>
+              <button type="button" class="btn btn-secondary" data-open="booking-modal" data-interest="groups">Запросить расчёт</button>
+            </article>
+            <article class="program-card">
+              <div class="program-tag">События</div>
+              <h3>Свадьба / фотосессия</h3>
+              <p>Локации ранчо для атмосферной съёмки и камерных свадебных форматов.</p>
+              <ul class="program-meta">
+                <li>Формат: пара + гости</li>
+                <li>Подготовка: индивидуально</li>
+              </ul>
+              <button type="button" class="btn btn-secondary" data-open="booking-modal" data-interest="events">Уточнить условия</button>
+            </article>
+            <article class="program-card">
+              <div class="program-tag">Дети</div>
+              <h3>Выпускной на ферме</h3>
+              <p>Групповой формат с активностями, маршрутами по территории и зоной отдыха.</p>
+              <ul class="program-meta">
+                <li>Формат: школы и детсады</li>
+                <li>Длительность: 3–5 часов</li>
+              </ul>
+              <button type="button" class="btn btn-secondary" data-open="booking-modal" data-interest="groups">Запросить дату</button>
+            </article>
+            <article class="program-card">
+              <div class="program-tag">Творчество</div>
+              <h3>Мастер-класс для группы</h3>
+              <p>Тематический день с мастер-классом, прогулкой и общим чаепитием.</p>
+              <ul class="program-meta">
+                <li>Формат: семьи, компании, классы</li>
+                <li>Длительность: от 2 часов</li>
+              </ul>
+              <button type="button" class="btn btn-secondary" data-open="booking-modal" data-interest="events">Подобрать формат</button>
+            </article>
+            <article class="program-card">
+              <div class="program-tag">Для пар</div>
+              <h3>Камерное событие</h3>
+              <p>Предложение, годовщина или важная дата в уютной обстановке на ранчо.</p>
+              <ul class="program-meta">
+                <li>Формат: 2–10 гостей</li>
+                <li>Наполнение: по запросу</li>
+              </ul>
+              <button type="button" class="btn btn-secondary" data-open="booking-modal" data-interest="couples">Обсудить идею</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- Блок "Почему выбирают нас" -->
       <section class="section">
         <div class="container">
@@ -194,6 +334,235 @@
         </div>
       </section>
 
+      <!-- Блок доверия -->
+      <section class="section section-light">
+        <div class="container">
+          <header class="section-header">
+            <h2>Нам доверяют отдых и важные события</h2>
+            <p>Короткие факты о формате отдыха на Русском Ранчо.</p>
+          </header>
+          <div class="trust-grid">
+            <article class="trust-card">
+              <div class="trust-number">2 + 3</div>
+              <h3>Объекта для брони</h3>
+              <p>2 домика и 3 беседки с отдельными страницами, фото и условиями.</p>
+            </article>
+            <article class="trust-card">
+              <div class="trust-number">5000 ₽</div>
+              <h3>Единая цена за сутки</h3>
+              <p>Прозрачная стоимость по всем объектам без сложной сетки тарифов.</p>
+            </article>
+            <article class="trust-card">
+              <div class="trust-number">5</div>
+              <h3>Форматов отдыха</h3>
+              <p>Для семей, детей, пар, групп и мероприятий на природе.</p>
+            </article>
+            <article class="trust-card">
+              <div class="trust-number">15–20 мин</div>
+              <h3>От Никольска</h3>
+              <p>Быстрый выезд на природу без долгой дороги и сложной логистики.</p>
+            </article>
+          </div>
+          <div class="section-actions">
+            <a href="https://yandex.ru/maps/-/CPBauB2w" target="_blank" rel="noopener" class="btn btn-outline">Отзывы на Яндекс Картах</a>
+            <button type="button" class="btn btn-primary" data-open="booking-modal">Оставить заявку</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- О нас пишут -->
+      <section class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>О нас пишут и нас рекомендуют</h2>
+            <p>Публикации о Русском Ранчо на внешних площадках и в региональных новостях.</p>
+          </header>
+          <div class="mentions-grid">
+            <article class="mention-card">
+              <div class="mention-source">Вести35</div>
+              <h3>Русское Ранчо попало в российский Атлас сельского туризма</h3>
+              <p>Видеосюжет о проекте и его развитии в Никольском округе.</p>
+              <a href="https://вести35.рф/video/2025/02/21/russkoe_rancho_nikolskie_fermery_novatory_popali_v_rossiyskiy_atlas_selskogo_turizma" target="_blank" rel="noopener" class="btn btn-outline">Смотреть публикацию</a>
+            </article>
+            <article class="mention-card">
+              <div class="mention-source">VologdaDel35</div>
+              <h3>Новостная публикация о Русском Ранчо</h3>
+              <p>Материал о развитии площадки и туристическом потенциале проекта.</p>
+              <a href="https://vologdadel35.ru/novosti/8253526.html" target="_blank" rel="noopener" class="btn btn-outline">Открыть материал</a>
+            </article>
+            <article class="mention-card">
+              <div class="mention-source">Вологда.рф</div>
+              <h3>Проект «Русское ранчо» в подборке агротура по Вологодчине</h3>
+              <p>Официальная новость о возможностях отдыха, форматах и активностях на ранчо.</p>
+              <a href="https://вологда.рф/news/tourism/142833/" target="_blank" rel="noopener" class="btn btn-outline">Читать новость</a>
+            </article>
+          </div>
+          <div class="section-actions">
+            <a href="https://yandex.ru/maps/-/CPBauB2w" target="_blank" rel="noopener" class="btn btn-primary">Отзывы на Яндекс Картах</a>
+            <a href="https://vk.com/pycckoe_rancho" target="_blank" rel="noopener" class="btn btn-secondary">Мы во ВКонтакте</a>
+            <a href="https://t.me/Zoloto_Ha_shee" target="_blank" rel="noopener" class="btn btn-ghost">Написать в Telegram</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Каркас: как проходит визит -->
+      <section id="visit-flow" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Как проходит визит</h2>
+            <p>Все просто: от первого сообщения до спокойного отдыха на ранчо.</p>
+          </header>
+          <div class="placeholder-grid placeholder-grid-4">
+            <article class="placeholder-card placeholder-card-step">
+              <div class="placeholder-marker">01</div>
+              <div class="placeholder-label">Шаг 1</div>
+              <h3>Оставляете заявку</h3>
+              <p>Пишете через форму на сайте или в Telegram: дата, формат и количество гостей.</p>
+            </article>
+            <article class="placeholder-card placeholder-card-step">
+              <div class="placeholder-marker">02</div>
+              <div class="placeholder-label">Шаг 2</div>
+              <h3>Подтверждаем детали</h3>
+              <p>Связываемся с вами, уточняем программу и время приезда, отвечаем на вопросы.</p>
+            </article>
+            <article class="placeholder-card placeholder-card-step">
+              <div class="placeholder-marker">03</div>
+              <div class="placeholder-label">Шаг 3</div>
+              <h3>Готовим визит</h3>
+              <p>Подсказываем, что взять с собой, где парковка и как удобнее доехать.</p>
+            </article>
+            <article class="placeholder-card placeholder-card-step">
+              <div class="placeholder-marker">04</div>
+              <div class="placeholder-label">Шаг 4</div>
+              <h3>Отдыхаете у нас</h3>
+              <p>Приезжаете в выбранное время и проводите день в вашем формате отдыха.</p>
+            </article>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn btn-primary" data-open="booking-modal">Записаться на удобную дату</button>
+            <a href="#contacts-info" class="btn btn-ghost">Смотреть контакты</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Каркас: FAQ -->
+      <section id="faq" class="section section-light">
+        <div class="container">
+          <header class="section-header">
+            <h2>Частые вопросы</h2>
+            <p>Коротко собрали то, что чаще всего спрашивают перед поездкой.</p>
+          </header>
+          <div class="placeholder-grid placeholder-grid-2">
+            <article class="placeholder-card placeholder-card-faq">
+              <div class="placeholder-marker">?</div>
+              <div class="placeholder-label">Вопрос 1</div>
+              <h3>Нужно ли бронировать заранее?</h3>
+              <p>Да, лучше заранее: закрепим удобную дату и подготовим формат именно под вас.</p>
+            </article>
+            <article class="placeholder-card placeholder-card-faq">
+              <div class="placeholder-marker">?</div>
+              <div class="placeholder-label">Вопрос 2</div>
+              <h3>Можно ли с маленькими детьми?</h3>
+              <p>Да, конечно. Форматы подходят для семей с детьми, программу подбираем по возрасту.</p>
+            </article>
+            <article class="placeholder-card placeholder-card-faq">
+              <div class="placeholder-marker">?</div>
+              <div class="placeholder-label">Вопрос 3</div>
+              <h3>Что входит в стоимость?</h3>
+              <p>Зависит от формата. Заранее рассказываем, что входит в программу и какие есть доп. опции.</p>
+            </article>
+            <article class="placeholder-card placeholder-card-faq">
+              <div class="placeholder-marker">?</div>
+              <div class="placeholder-label">Вопрос 4</div>
+              <h3>Как добраться и где парковка?</h3>
+              <p>После записи присылаем точку на карте и ориентиры. Для гостей есть удобный подъезд.</p>
+            </article>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn btn-primary" data-open="booking-modal">Задать свой вопрос</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Каркас: пакеты и сценарии -->
+      <section id="packages" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Пакеты и сценарии</h2>
+            <p>Готовые форматы, которые адаптируем под ваш состав гостей и дату.</p>
+          </header>
+          <div class="placeholder-grid placeholder-grid-3">
+            <article class="placeholder-card placeholder-card-package">
+              <div class="placeholder-marker">A</div>
+              <div class="placeholder-label">Пакет A</div>
+              <h3>Семейный день</h3>
+              <p>Знакомство с животными, прогулка по территории и спокойный семейный темп.</p>
+            </article>
+            <article class="placeholder-card placeholder-card-package">
+              <div class="placeholder-marker">B</div>
+              <div class="placeholder-label">Пакет B</div>
+              <h3>Детский праздник</h3>
+              <p>Сценарий для детей с активностями и интерактивом в комфортном формате для всех гостей.</p>
+            </article>
+            <article class="placeholder-card placeholder-card-package">
+              <div class="placeholder-marker">C</div>
+              <div class="placeholder-label">Пакет C</div>
+              <h3>Праздник для компании</h3>
+              <p>Формат для группы: встреча гостей, тайминг дня и программа под ваше событие.</p>
+            </article>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn btn-secondary" data-open="booking-modal" data-interest="groups">Подобрать пакет</button>
+            <a href="{% url 'main:prices' %}" class="btn btn-ghost">Смотреть цены и условия</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Блок авторизации / подписка на предложения ко дню рождения -->
+      <section id="auth" class="section section-light">
+        <div class="container section-split">
+          <div class="section-text">
+            <h2>Личный профиль гостя</h2>
+            <p>Заполните короткую форму, чтобы мы создали ваш профиль в нашей базе гостей.</p>
+            <p>
+              Для чего это нужно: в день рождения мы сможем отправлять вам персональные предложения на отдых
+              в Telegram через нашего бота.
+            </p>
+            <ul class="bullet-list">
+              <li>Храним имя, фамилию, телефон и дату рождения</li>
+              <li>Используем данные только для связи и предложений от Русского Ранчо</li>
+              <li>Профиль можно обновить повторной отправкой формы</li>
+            </ul>
+            <div class="section-actions">
+              <a href="{% url 'main:cabinet_login' %}" class="btn btn-secondary">Уже есть профиль? Войти</a>
+            </div>
+          </div>
+          <div class="section-form">
+            <form class="booking-form" id="birthday-subscribe-form">
+              <h3>Авторизация гостя</h3>
+              <label>
+                Имя
+                <input type="text" name="first_name" placeholder="Введите имя" required />
+              </label>
+              <label>
+                Фамилия
+                <input type="text" name="last_name" placeholder="Введите фамилию" required />
+              </label>
+              <label>
+                Номер телефона
+                <input type="tel" name="phone" placeholder="+7 ..." required />
+              </label>
+              <label>
+                Дата рождения
+                <input type="date" name="birth_date" required />
+              </label>
+              <button type="submit" class="btn btn-primary btn-full">Сохранить профиль</button>
+              <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <!-- Галерея (тизер) -->
       <section class="section section-light">
         <div class="container">
@@ -214,6 +583,16 @@
 
       <!-- Сводные блоки по каждому формату (якоря на отдельные страницы) -->
       <section id="families" class="section">
+        <div class="families-media" aria-hidden="true">
+          <video
+            class="families-video"
+            src="{% static 'assets/для-семей/family-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
         <div class="container section-split">
           <div class="section-text">
             <h2>Для семей</h2>
@@ -232,11 +611,20 @@
               <a href="#contacts" class="btn btn-ghost">Спросить про формат</a>
             </div>
           </div>
-          <div class="section-image section-image-families"></div>
         </div>
       </section>
 
       <section id="kids" class="section section-light">
+        <div class="kids-media" aria-hidden="true">
+          <video
+            class="kids-video"
+            src="{% static 'assets/для-детей/kids-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
         <div class="container section-split">
           <div class="section-text">
             <h2>Для детей</h2>
@@ -255,11 +643,20 @@
               <a href="#contacts" class="btn btn-ghost">Уточнить детали</a>
             </div>
           </div>
-          <div class="section-image section-image-kids"></div>
         </div>
       </section>
 
       <section id="couples" class="section">
+        <div class="couples-media" aria-hidden="true">
+          <video
+            class="couples-video"
+            src="{% static 'assets/для-пар/couples-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
         <div class="container section-split">
           <div class="section-text">
             <h2>Для пар</h2>
@@ -278,13 +675,20 @@
               <button type="button" class="btn btn-ghost" data-open="certificate-modal">Подарочный сертификат</button>
             </div>
           </div>
-          <div class="section-image section-image-couples">
-            <img src="{% static 'assets/для-пар/cd0c54659bdbe8ef54be0d1c2f127167.jpg' %}" alt="Свидание на ранчо: пикник у воды" />
-          </div>
         </div>
       </section>
 
       <section id="groups" class="section section-light">
+        <div class="groups-media" aria-hidden="true">
+          <video
+            class="groups-video"
+            src="{% static 'assets/для-групп/groups-background.mp4' %}"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
         <div class="container section-split">
           <div class="section-text">
             <h2>Для групп</h2>
@@ -300,11 +704,8 @@
             </ul>
             <div class="section-actions">
               <a href="{% url 'main:groups' %}" class="btn btn-primary">Форматы для групп</a>
-              <a href="#contacts" class="btn btn-ghost">Провести праздник у нас</a>
+              <button type="button" class="btn btn-ghost" data-action="open-party-form">Провести праздник у нас</button>
             </div>
-          </div>
-          <div class="section-image section-image-groups">
-            <img src="{% static 'assets/для-групп/UFW81zkHwxtqe1qPv_6fgvmxYIQ97QZBeYiNSmov8hgCiQXMNrUhyJ-URB4xOxKgO8k9OcmHXKsRYbpGoWK6UojM.jpg' %}" alt="Группа у скамьи желаний на ранчо" />
           </div>
         </div>
       </section>
@@ -455,6 +856,7 @@
         </div>
       </section>
 
+      <div id="contacts-info"></div>
       <!-- Контакты и запись -->
       <section id="contacts" class="section section-contacts">
         <div class="container section-split">
@@ -473,7 +875,7 @@
             </ul>
             <div class="cta-buttons">
               <button type="button" class="btn btn-primary" data-open="certificate-modal">Подарочный сертификат</button>
-              <a href="{% url 'main:home' %}#contacts" class="btn btn-secondary">Провести праздник у нас</a>
+              <button type="button" class="btn btn-secondary" data-action="open-party-form">Провести праздник у нас</button>
             </div>
             <div class="faq-preview">
               <h3>Частые вопросы</h3>
@@ -508,7 +910,7 @@
                   <option value="couples">Свидания и пикники</option>
                   <option value="groups">Групповые выезды</option>
                   <option value="events">Мероприятия и афиша</option>
-                  <option value="nedvizhimost">Тепло и уют для вас (домики, беседки)</option>
+                  <option value="nedvizhimost">Теплые и уютные места для вас (домики, беседки)</option>
                   <option value="certificate">Подарочный сертификат</option>
                   <option value="prices">Цены и условия</option>
                   <option value="other">Другое</option>

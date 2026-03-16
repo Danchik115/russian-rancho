@@ -23,7 +23,11 @@
           <a href="{% url 'main:events' %}"{% if active_nav == 'events' %} aria-current="page"{% endif %}>Афиша</a>
           <a href="{% url 'main:prices' %}"{% if active_nav == 'prices' %} aria-current="page"{% endif %}>Цены</a>
           <a href="{% url 'main:about' %}"{% if active_nav == 'about' %} aria-current="page"{% endif %}>О ферме</a>
-          <a href="{% url 'main:nedvizhimost' %}"{% if active_nav == 'nedvizhimost' %} aria-current="page"{% endif %}>Тепло и уют для&nbsp;вас</a>
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'main:cabinet' %}" class="nav-cta">Личный кабинет</a>
+          {% else %}
+          <a href="{% url 'main:cabinet_login' %}" class="nav-cta">Войти</a>
+          {% endif %}
           <a href="{% url 'main:home' %}#contacts">Контакты</a>
         </nav>
         <button class="nav-toggle" aria-label="Открыть меню"><span></span><span></span><span></span></button>
@@ -51,6 +55,55 @@
         </div>
       </div>
     </footer>
+
+    <!-- Модальное окно: заявка на запись -->
+    <div id="booking-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="booking-modal-title">
+      <div class="modal-backdrop" data-close="booking-modal"></div>
+      <div class="modal-panel booking-modal-panel">
+        <button type="button" class="modal-close" aria-label="Закрыть" data-close="booking-modal">&times;</button>
+        <h2 id="booking-modal-title" class="modal-title">Оставить заявку</h2>
+        <p class="modal-subtitle">Заполните форму, и мы свяжемся с вами для уточнения деталей.</p>
+        <form class="booking-form booking-form-modal" id="booking-modal-form">
+          <label>
+            Имя
+            <input type="text" name="name" placeholder="Как к вам обращаться?" required />
+          </label>
+          <label>
+            Телефон
+            <input type="tel" name="phone" placeholder="+7 ..." required />
+          </label>
+          <label>
+            Что вас интересует
+            <select name="interest">
+              <option value="">Выберите вариант</option>
+              <option value="family">Семейные программы</option>
+              <option value="kids">Форматы для детей</option>
+              <option value="couples">Свидания и пикники</option>
+              <option value="groups">Групповые выезды</option>
+              <option value="events">Мероприятия и афиша</option>
+              <option value="nedvizhimost">Теплые и уютные места для вас (домики, беседки)</option>
+              <option value="certificate">Подарочный сертификат</option>
+              <option value="prices">Цены и условия</option>
+              <option value="other">Другое</option>
+            </select>
+          </label>
+          <label>
+            Дата
+            <input type="date" name="date" />
+          </label>
+          <label>
+            Количество человек
+            <input type="number" name="people" min="1" placeholder="Например, 4" />
+          </label>
+          <label>
+            Комментарий
+            <textarea name="comment" rows="3" placeholder="Любые детали: возраст детей, формат, время и т.д."></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+          <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+        </form>
+      </div>
+    </div>
 
     <!-- Модальное окно: подарочный сертификат -->
     <div id="certificate-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="certificate-modal-title">

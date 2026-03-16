@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Тёплая беседка 1 — Русское Ранчо{% endblock %}
+{% block meta_description %}Тёплая беседка 1 на Русском Ранчо: цена 5000 ₽/сутки, вместимость до 20 человек, фото и условия бронирования.{% endblock %}
+{% block main_attr %}{% endblock %}
+
+{% block content %}
+<section class="section hero hero-page">
+  <div class="hero-media hero-media-page hero-media-about"></div>
+  <div class="container hero-content">
+    <p class="hero-kicker">Недвижимость</p>
+    <h1>Тёплая беседка 1</h1>
+    <p class="hero-subtitle">Закрытая тёплая беседка — можно отдыхать в любую погоду.</p>
+    <div class="hero-actions">
+      <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Забронировать</a>
+      <a href="{% url 'main:nedvizhimost' %}" class="btn btn-outline">Все объекты</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="container">
+    <div class="property-card">
+      <h2>Условия</h2>
+      <ul class="property-meta">
+        <li><strong>Цена:</strong> 5000 ₽ / сутки</li>
+        <li><strong>Вместимость:</strong> до 20 человек</li>
+      </ul>
+      <p class="property-includes-title">Что входит:</p>
+      <ul class="property-includes">
+        <li>Мангальная зона</li>
+        <li>Помощь в оформлении (при необходимости)</li>
+        <li>Музыкальное сопровождение</li>
+      </ul>
+    </div>
+    <div class="object-gallery">
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-17-40%20(2).jpg' %}" alt="Тёплая беседка 1" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-17-41.jpg' %}" alt="Тёплая беседка 1" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-17-42.jpg' %}" alt="Тёплая беседка 1" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/teplaya-besedka-1/photo_2026-03-15_13-25-16.jpg' %}" alt="Тёплая беседка 1" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

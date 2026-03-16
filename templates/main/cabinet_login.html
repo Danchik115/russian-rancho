@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход в личный кабинет — Русское Ранчо{% endblock %}
+{% block meta_description %}Вход в личный кабинет Русского Ранчо по номеру телефона и паролю.{% endblock %}
+
+{% block content %}
+<section class="section section-light">
+  <div class="container section-split">
+    <div class="section-text">
+      <h1>Личный кабинет</h1>
+      <p>Войдите по номеру телефона и паролю, чтобы быстро отправлять заявки с предзаполненными данными.</p>
+      <p>Если аккаунта нет, зарегистрируйтесь и мы привяжем ваш профиль гостя к кабинету.</p>
+      <div class="section-actions">
+        <a href="{% url 'main:cabinet_register' %}" class="btn btn-secondary">Регистрация</a>
+      </div>
+    </div>
+    <div class="section-form">
+      {% if messages %}
+        {% for message in messages %}
+          <p class="form-note">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <form class="booking-form" method="post">
+        {% csrf_token %}
+        <h3>Вход</h3>
+        <label>
+          Номер телефона
+          <input type="tel" name="phone" placeholder="+7 ..." required />
+        </label>
+        <label>
+          Пароль
+          <input type="password" name="password" placeholder="Введите пароль" required />
+        </label>
+        <button type="submit" class="btn btn-primary btn-full">Войти в кабинет</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

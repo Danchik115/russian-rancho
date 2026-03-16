@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Домик у пруда — Русское Ранчо{% endblock %}
+{% block meta_description %}Домик у пруда на Русском Ранчо: цена 5000 ₽/сутки, вместимость до 6 человек, фото и условия бронирования.{% endblock %}
+{% block main_attr %}{% endblock %}
+
+{% block content %}
+<section class="section hero hero-page">
+  <div class="hero-media hero-media-page hero-media-about"></div>
+  <div class="container hero-content">
+    <p class="hero-kicker">Недвижимость</p>
+    <h1>Домик у пруда</h1>
+    <p class="hero-subtitle">Домик с видом на воду — уединённо и красиво.</p>
+    <div class="hero-actions">
+      <a href="{% url 'main:home' %}#contacts" class="btn btn-primary">Забронировать</a>
+      <a href="{% url 'main:nedvizhimost' %}" class="btn btn-outline">Все объекты</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="container">
+    <div class="property-card">
+      <h2>Условия</h2>
+      <ul class="property-meta">
+        <li><strong>Цена:</strong> 5000 ₽ / сутки</li>
+        <li><strong>Вместимость:</strong> до 6 человек</li>
+      </ul>
+      <p class="property-includes-title">Что входит:</p>
+      <ul class="property-includes">
+        <li>Проживание</li>
+        <li>Посещение фермы (прогулки, кормление животных и т.д.)</li>
+        <li>Мангальная зона</li>
+      </ul>
+    </div>
+    <div class="object-gallery">
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-28%20(2).jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-28.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-29%20(2).jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-29.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-30.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-31%20(2).jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-31.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-33.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-34.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-37.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-38.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-39.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-40.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-42%20(2).jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+      <div class="object-photo"><img src="{% static 'assets/nedvizhimost/domik-u-pruda/photo_2026-03-15_13-17-43.jpg' %}" alt="Домик у пруда" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+{% endblock %}
